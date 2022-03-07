@@ -7,7 +7,7 @@
   <div class="col">
 <textarea formControlName="postale" [ngClass]="{ 'errortxt':submitted &&f['postale'].errors|| f['postale'].touched  &&f['postale'].errors }"></textarea>
 <div *ngIf="f['postale'].invalid && (submitted||f['postale'].dirty || f['postale'].touched)">
-  <span class="error text-danger" *ngIf="submitted && f['postale'].errors?.['required']">
+  <span class="error text-danger" *ngIf=" f['postale'].errors?.['required']">
     Adresse Postale obligatoire.
   </span>
 
