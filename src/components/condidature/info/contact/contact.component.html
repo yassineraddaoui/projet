@@ -1,0 +1,46 @@
+<fieldset [formGroup]="form" class="form-control">
+<legend>Contact</legend>
+<div class="row">
+  <div class="col">
+<label>Adresse Postale</label>
+  </div>
+  <div class="col">
+<textarea formControlName="postale" [ngClass]="{ 'errortxt':submitted &&f['postale'].errors|| f['postale'].touched  &&f['postale'].errors }"></textarea>
+<div *ngIf="f['postale'].invalid && (submitted||f['postale'].dirty || f['postale'].touched)">
+  <span class="error text-danger" *ngIf="submitted && f['postale'].errors?.['required']">
+    Adresse Postale obligatoire.
+  </span>
+
+</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <label>Adresse Mail</label>
+    <input type="text" formControlName="mail" [ngClass]="{ 'errorx':submitted &&f['mail'].errors|| f['mail'].dirty  &&f['mail'].errors || f['mail'].touched  &&f['mail'].errors }">
+    <div *ngIf="f['mail'].invalid && (submitted||f['mail'].dirty || f['mail'].touched)">
+      <span class="error text-danger" *ngIf="f['mail'].errors?.['required']">
+        Adresse Mail obligatoire.
+      </span>
+      <span class="error text-danger" *ngIf="f['mail'].errors?.['email']">
+        Adresse Mail invalide.
+      </span>
+    </div>
+  </div>
+
+  <div class="col">
+    <label>Numéro de téléphone</label>
+    <input type="text" formControlName="tel" [ngClass]="{ 'errorx':submitted &&f['mail'].errors|| f['tel'].dirty  &&f['tel'].errors || f['tel'].touched  &&f['tel'].errors }">
+    <div *ngIf="f['tel'].invalid && ( submitted||f['tel'].dirty || f['tel'].touched)">
+      <span class="error text-danger" *ngIf="f['tel'].errors?.['required']">
+        Numéro de téléphone obligatoire.
+      </span>
+      <span class="error text-danger" *ngIf="f['tel'].errors?.['pattern']">
+        Numéro de téléphone invalide.
+      </span>
+    </div>
+  </div>
+
+</div>
+<br>
+</fieldset>

@@ -1,0 +1,44 @@
+<fieldset [formGroup]="form" class="form-control">
+  <legend>Cas d'handicap:</legend>
+
+<div  class="row">
+  <div class="col"><label>Nombre de cas d'handicap</label>
+
+    <select (change)="onChange($event)">
+      <option>0</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+
+    </select>
+    </div>
+    <div class="col">
+     
+      </div>
+</div>
+
+<div *ngFor="let loop of count(selected);let i = index;"  class="row">
+  <div class="col"><label>Numéro carte d'handicap </label>
+    <input [formControlName]="i" type="text"  [ngClass]="{ 'errorx': submitted &&f[i].errors ||f[i].dirty  &&f[i].errors || f[i].touched  &&f[i].errors }">
+    <div *ngIf="f[i].invalid && (submitted||f[i].dirty || f[i].touched)">
+      <span class="error text-danger" *ngIf="f[i].errors?.['required']">
+        Numéro carte d'handicap obligatoire.
+      </span>
+      <span class="error text-danger" *ngIf="f[i].errors?.['pattern']">
+        Numéro carte d'handicap invalide.
+      </span>
+    </div>  
+</div>
+<div class="col"><label>Degré</label>
+  <select>
+    <label>Degré</label>
+    <option>Degré 1</option>
+    <option>Degré 2</option>
+    <option>Degré 3</option>
+    </select>
+  </div>
+</div>
+<br>
+</fieldset>

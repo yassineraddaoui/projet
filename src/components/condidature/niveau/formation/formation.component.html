@@ -1,0 +1,37 @@
+<fieldset [formGroup]="form" class="form-control">
+  <legend> Formation</legend>
+  <div class="row">
+    <div class="col">
+      <label> Formation Professionnelle en </label>
+    </div>
+    
+    <div class="col">
+    <select>
+      <option>...</option>
+    </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Date de graduation</label>
+      <input type="date" formControlName="graduation" [ngClass]="{ 'errorx':  f['graduation'].dirty  &&f['graduation'].errors || f['graduation'].touched  &&f['graduation'].errors|| submitted&&f['graduation'].errors }">
+      <div *ngIf="f['graduation'].invalid && (f['graduation'].dirty || f['graduation'].touched)">
+        <span class="error text-danger">Date de graduation obligatoire.</span>
+    </div>
+    </div>
+    <div class="col">
+      <label>Moyenne</label>
+      <input type="text" formControlName="moy" [ngClass]="{ 'errorx':  f['moy'].dirty  &&f['moy'].errors || f['moy'].touched  &&f['moy'].errors || f['moy'].errors &&submitted }">
+      <div *ngIf="f['moy'].invalid && (f['moy'].dirty|| submitted|| f['moy'].touched)">
+  
+        <span class="error text-danger"  *ngIf="f['moy'].errors?.['required']">
+          Moyenne obligatoire.
+        </span>
+        <span class="error text-danger"  *ngIf="f['moy'].errors?.['max'] ||f['moy'].errors?.['min'] || f['moy'].errors?.['pattern']">
+          Moyenne invalide
+      </span>
+    </div>
+  </div>
+  </div>
+  <br>
+</fieldset>

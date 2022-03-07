@@ -1,0 +1,27 @@
+
+  .im{
+    height: 100%;
+    width: 35%;
+}
+
+.footer-content-right {
+    
+    position: fixed;
+    right: 0;
+    bottom: 0;  }
+.icon-style {
+    height:40px;
+    margin-left:20px;
+  }
+  
+  .icon-style:hover {
+    background-color:rgb(230, 238, 248);
+  }
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: white;
+  }

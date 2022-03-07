@@ -1,0 +1,43 @@
+
+<fieldset [formGroup]="form" class="form-control">
+  <legend>Etudes Supérieur</legend>
+  
+    <div class="row">
+      <div class="col">
+  <label>Niveau d'etudes</label>
+      </div>
+      <div class="col">
+        <select (change)="onChange($event)">
+          <option  value="1"></option>
+          <option  value="2"></option>
+          <option  value="3"></option>
+        </select>
+      </div>
+  
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Spécialité</label>
+        <select>
+          <option></option>
+          <option></option>
+          <option></option>
+          <option></option>
+          <option></option>
+          <option></option>
+
+        </select>
+      </div>
+      <div class="col">
+        <label>Date</label>
+        <input formControlName="dateSup" type="date" [ngClass]="{ 'errorx':f['dateSup'].errors&& submitted|| f['dateSup'].touched  &&f['dateSup'].errors }">
+        <div *ngIf="f['dateSup'].invalid && submitted|| f['dateSup'].invalid &&  f['dateSup'].touched">
+          <span class="error text-danger" *ngIf="f['dateSup'].errors?.['required']">
+            Date obligatoire.
+          </span>
+        </div>
+      </div>
+  
+    </div>
+    <br>
+  </fieldset>

@@ -1,0 +1,49 @@
+<fieldset class="form-control" [formGroup]="form">
+  <legend>Domaine</legend>
+  <div class="row">
+    <div class="col">
+      <label>Spécialité</label>
+    </div>
+    <div class="col">
+      <select>
+        <option></option>
+        <option></option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <label>Postes Disponibles</label>
+      <select multiple>
+        <option (click)="onChange($event,1)" *ngFor="let item of a;let i=index">{{item}}</option>
+    </select>
+    </div>
+
+    <div class="col">
+<div class="button">
+  <input type="button" value=">" (click)="add()">
+  <input type="button" value="<" (click)="del()">
+</div>
+        </div>
+
+    <div class="col">
+      <label>Postes Sélectionnées</label>
+      <select multiple="multiple" formControlName="post" [ngClass]="{'error': submitted&& this.bx.length<1 || f['post'].touched && this.bx.length<1  }" >
+        <option (click)="onChange($event,2)" *ngFor="let item of bx;let i=index">{{item}}</option>
+  
+      </select>
+    
+        </div>
+        
+  </div>
+    <div class="error text-danger" *ngIf="max===1&&this.bx.length===2">
+      <label > Vous pouvez pas ajouter plus que 2 postes </label>
+    </div>
+    <div class="error text-danger" *ngIf="(submitted|| f['post'].touched) && this.bx.length<1">
+      <label > Vous devez au moins sélectionner une poste </label>
+    </div>
+
+
+  <br>
+</fieldset>

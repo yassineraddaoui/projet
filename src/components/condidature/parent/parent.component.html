@@ -1,0 +1,78 @@
+<fieldset [formGroup]="form"  class="form-control">
+  <legend>Parents</legend>
+  <div  class="row">
+    <div class="col"><label>Nom du père</label>
+      <input formControlName="pereNom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['pereNom'].errors || f['pereNom'].touched  &&f['pereNom'].errors }" >
+     <div *ngIf="f['pereNom'].invalid && (submitted||f['pereNom'].dirty || f['pereNom'].touched)">
+          <span class="error text-danger" *ngIf="f['pereNom'].errors?.['required']">
+            Nom du père obligatoire.
+          </span>
+          <span class="error text-danger" *ngIf="f['pereNom'].errors?.['pattern']">
+            Nom du père invalide.
+          </span>
+        </div>
+      </div>
+
+
+      <div class="col"><label>Prenom du père</label>
+        <input formControlName="perePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['perePrenom'].errors || f['perePrenom'].touched  &&f['perePrenom'].errors }">
+        <div *ngIf="f['perePrenom'].invalid && (submitted||f['perePrenom'].dirty || f['perePrenom'].touched)">
+          <span class="error text-danger" *ngIf="f['perePrenom'].errors?.['required']">
+            Prenom du père obligatoire.
+          </span>
+          <span class="error text-danger" *ngIf="f['perePrenom'].errors?.['pattern']">
+            Prenom du père invalide.
+          </span>
+        </div>
+        </div>
+        <div class="col"><label>CIN du père</label>
+          <input formControlName="pereCIN" type="text" [ngClass]="{ 'errorx':  submitted  &&f['pereCIN'].errors || f['pereCIN'].touched  &&f['pereCIN'].errors }" >
+          <div *ngIf="f['pereCIN'].invalid && (submitted||f['pereCIN'].dirty || f['pereCIN'].touched)">
+            <span class="error text-danger" *ngIf="f['pereCIN'].errors?.['required']">
+              CIN du père obligatoire.
+            </span>
+            <span class="error text-danger" *ngIf="f['pereCIN'].errors?.['pattern']">
+              CIN du père invalide.
+            </span>
+          </div>
+        </div>
+  </div>
+  <div  class="row">
+    <div class="col"><label>Nom du mère</label>
+      <input formControlName="mereNom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['mereNom'].errors || f['mereNom'].touched  &&f['mereNom'].errors }">
+      <div *ngIf="f['mereNom'].invalid && (submitted||f['mereNom'].dirty || f['mereNom'].touched)">
+        <span class="error text-danger" *ngIf="f['mereNom'].errors?.['required']">
+          Nom du mère obligatoire.
+        </span>
+        <span class="error text-danger" *ngIf="f['mereNom'].errors?.['pattern']">
+          Nom du mère invalide.
+        </span>
+      </div>
+      </div>
+      <div class="col"><label>Prenom du mère</label>
+        <input formControlName="merePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['merePrenom'].errors || f['merePrenom'].touched  &&f['merePrenom'].errors }">
+        <div *ngIf="f['merePrenom'].invalid && (submitted||f['merePrenom'].dirty || f['merePrenom'].touched)">
+          <span class="error text-danger" *ngIf="f['merePrenom'].errors?.['required']">
+            Prenom du mère obligatoire.
+          </span>
+          <span class="error text-danger" *ngIf="f['merePrenom'].errors?.['pattern']">
+            Prenom du mère invalide.
+          </span>
+        </div>
+  
+        </div>
+        <div class="col"><label>CIN du mère</label>
+          <input formControlName="mereCIN" type="text" [ngClass]="{ 'errorx':  submitted  &&f['mereCIN'].errors || f['mereCIN'].touched  &&f['mereCIN'].errors }">
+          <div *ngIf="f['mereCIN'].invalid && (submitted||f['mereCIN'].dirty || f['mereCIN'].touched)">
+            <span class="error text-danger" *ngIf="f['mereCIN'].errors?.['required']">
+              Prenom du mère obligatoire.
+            </span>
+            <span class="error text-danger" *ngIf="f['mereCIN'].errors?.['pattern']">
+              Prenom du mère invalide.
+            </span>
+          </div>
+  
+        </div>
+  </div>
+  <br>  
+  </fieldset>

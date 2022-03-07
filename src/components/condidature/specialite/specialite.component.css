@@ -1,0 +1,19 @@
+input[type=button]{
+    margin: 5px;
+    background-color: #1448c1;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.button{
+margin-top: 60px;
+}
+
+.error{
+  background-color: #ffdddd;
+  border: 1px solid #cc0033;
+  margin-top: 5px;
+}
+

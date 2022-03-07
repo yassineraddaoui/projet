@@ -1,0 +1,84 @@
+<fieldset [formGroup]="form" class="form-control">
+  <legend> Frères et Soeurs en chômage </legend>
+  <div  class="row">
+    <div class="col"><label>Nombre Frères en chômage</label>
+  
+      <select (change)="onChange($event)">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+
+      </select>
+      </div>
+      <div class="col">
+        </div>
+  </div>
+  <br>
+  
+
+
+
+
+
+  <div  class="row" *ngFor="let loop of count(selected);let i = index;">
+    <div class="col"><label>CIN</label>
+      </div>
+      <div class="col">
+        <input type="text" [formControlName]="i+'cin'" [ngClass]="{ 'errorx': submitted &&  f[i+'cin'].errors || f[i+'cin'].dirty  &&f[i+'cin'].errors || f[i+'cin'].touched  &&f[i+'cin'].errors }">
+        <div *ngIf="f[i+'cin'].invalid && (submitted||f[i+'cin'].dirty || f[i+'cin'].touched)">
+          <span class="error text-danger" *ngIf="submitted || f[i+'cin'].touched  && f[i+'cin'].errors?.['required']">
+            CIN obligatoire.
+          </span>
+          <span class="error text-danger" *ngIf="f[i+'cin'].errors?.['pattern'] || f[i+'cin'].errors?.['minlength']|| f[i+'cin'].errors?.['maxlength']">
+            CIN invalide.
+          </span>
+        </div>
+        </div>
+        <div class="col"><label>Nom</label>
+        </div>
+        <div class="col">
+          <input type="text" [formControlName]="i+'nom'" [ngClass]="{ 'errorx': submitted && f[i+'nom'].errors||   f[i+'nom'].dirty  &&f[i+'nom'].errors || f[i+'nom'].touched  &&f[i+'nom'].errors }">
+          <div *ngIf="f[i+'nom'].invalid && (submitted||f[i+'nom'].dirty || f[i+'nom'].touched)">
+            <span class="error text-danger" *ngIf="(submitted || f[i+'nom'].touched ) &&f[i+'nom'].errors?.['required']">
+              Nom obligatoire.
+            </span>
+            <span class="error text-danger" *ngIf="f[i+'nom'].errors?.['pattern']">
+              Nom invalide.
+            </span>
+          </div>
+          </div>
+          <div class="col"><label>Prenom</label>
+          </div>
+          <div class="col">
+            <input type="text" [formControlName]="i+'prenom'" [ngClass]="{ 'errorx': submitted && f[i+'prenom'].errors||  f[i+'prenom'].dirty  &&f[i+'prenom'].errors || f[i+'prenom'].touched  &&f[i+'prenom'].errors }">
+            <div *ngIf="f[i+'prenom'].invalid && (submitted||f[i+'prenom'].dirty || f[i+'prenom'].touched)">
+              <span class="error text-danger" *ngIf="(submitted || f[i+'prenom'].touched ) &&f[i+'prenom'].errors?.['required']">
+                Prenom obligatoire.
+              </span>
+              <span class="error text-danger" *ngIf="f[i+'prenom'].errors?.['pattern']">
+                Prenom invalide.
+              </span>
+              
+            </div>  
+            </div>
+            <div class="col"><label>Date de naissance</label>
+            </div>
+            <div class="col">
+              <input type="date" [formControlName]="i+'date'" [ngClass]="{ 'errorx': submitted && f[i+'date'].errors|| f[i+'date'].dirty  &&f[i+'date'].errors || f[i+'date'].touched  &&f[i+'date'].errors }">
+              <div *ngIf="f[i+'date'].invalid && (submitted||f[i+'date'].dirty || f[i+'date'].touched)">
+                <span class="error text-danger" *ngIf=" (submitted || f[i+'date'].touched )f[i+'date'].errors?.['required']">
+                  Date de naissance obligatoire.
+                </span>
+               
+                
+              </div>  
+              </div>
+  </div>
+  
+
+
+
+</fieldset>

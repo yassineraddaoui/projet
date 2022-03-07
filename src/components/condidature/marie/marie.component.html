@@ -1,0 +1,40 @@
+
+<fieldset [formGroup]="form"  class="form-control">
+  <legend>L'époux</legend>
+    <div  class="row">
+      <div class="col"><label>Nom du l'époux</label>
+        <input formControlName="epauxNom" type="text" [ngClass]="{ 'errorx':  f['epauxNom'].dirty  &&f['epauxNom'].errors || f['epauxNom'].touched  &&f['epauxNom'].errors || submitted &&f['epauxNom'].errors }" >
+        <div *ngIf="f['epauxNom'].invalid && (submitted ||f['epauxNom'].dirty || f['epauxNom'].touched)">
+          <span class="error text-danger" *ngIf="f['epauxNom'].errors?.['required']">
+            Nom du l'époux obligatoire.
+          </span>
+          <span class="error text-danger" *ngIf="f['epauxNom'].errors?.['pattern']">
+            Nom du l'époux invalide.
+          </span>
+        </div>
+        </div>
+        <div class="col"><label>Prenom du l'époux</label>
+          <input formControlName="epauxPrenom" type="text" [ngClass]="{ 'errorx':  f['epauxPrenom'].dirty  &&f['epauxPrenom'].errors || f['epauxPrenom'].touched  &&f['epauxPrenom'].errors || submitted &&f['epauxPrenom'].errors }">
+          <div *ngIf="f['epauxPrenom'].invalid && (submitted||f['epauxPrenom'].dirty || f['epauxPrenom'].touched)">
+            <span class="error text-danger" *ngIf="f['epauxPrenom'].errors?.['required']">
+              Prenom du l'époux obligatoire.
+            </span>
+            <span class="error text-danger" *ngIf="f['epauxPrenom'].errors?.['pattern']">
+              Prenom du l'époux invalide.
+            </span>
+          </div>
+    
+          </div>
+          <div class="col"><label>CIN du l'époux</label>
+            <input formControlName="epauxCIN" type="text" [ngClass]="{ 'errorx': submitted&&f['epauxCIN'].errors  || f['epauxCIN'].dirty  &&f['epauxCIN'].errors || f['epauxCIN'].touched  &&f['epauxCIN'].errors }" >
+            <div *ngIf="f['epauxCIN'].invalid && (submitted||f['epauxCIN'].dirty || f['epauxCIN'].touched)">
+              <span class="error text-danger" *ngIf="f['epauxCIN'].errors?.['required']">
+                CIN du l'époux obligatoire.
+              </span>
+              <span class="error text-danger" *ngIf="f['epauxCIN'].errors?.['pattern']">
+                CIN du l'époux invalide.
+              </span>
+            </div>
+          </div>
+    </div>
+    </fieldset>
