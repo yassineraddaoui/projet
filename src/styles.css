@@ -43,14 +43,11 @@ input[type=submit] {
   cursor: pointer;
   float: right;
 }
-html {     display: table;
-  margin: auto;
-overflow-x: hidden; overflow-y: scroll; }
-
-html, body { height: 100%;width: 70%;text-align: center;
+html {     
+overflow-x: hidden; overflow-y: scroll;
 }
-body {    display: table-cell;
-  vertical-align: middle;
+
+body {    
 font-family: Roboto, "Helvetica Neue", sans-serif; }
 legend{
   margin-bottom: 30px;

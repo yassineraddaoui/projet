@@ -18,6 +18,8 @@
     background-color:rgb(230, 238, 248);
   }
   footer {
+    text-align: center;
+
     position: fixed;
     left: 0;
     bottom: 0;

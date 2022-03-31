@@ -1,4 +1,4 @@
-import { NgModule,EventEmitter } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { LoginComponent } from 'src/components/login/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,13 @@ import { ContactComponent } from 'src/components/condidature/info/contact/contac
 import { ResultatComponent } from 'src/components/resultat/resultat.component';
 import { SpecialiteComponent } from 'src/components/condidature/specialite/specialite.component';
 import { AdminComponent } from 'src/components/Admin/Admin.component';
+import { HeaderComponent } from 'src/components/Admin/header/header.component';
+import {MatToolbarModule } from '@angular/material/toolbar';
+import {MatButtonModule } from '@angular/material/button';
+import {MatIconModule } from '@angular/material/icon';
+import { ListCondidatsComponent } from 'src/components/Admin/listCondidats/listCondidats.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +52,9 @@ import { AdminComponent } from 'src/components/Admin/Admin.component';
     ContactComponent,
     ResultatComponent,
     SpecialiteComponent,
+    HeaderComponent,
+    ListCondidatsComponent,
+    AdminComponent
     
     
   ],
@@ -54,8 +64,12 @@ import { AdminComponent } from 'src/components/Admin/Admin.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CommonModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+
+
+  <div class="container">
+  <table class=" table table-stripped">
+    <thead>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Cin</th>
+    </thead>  
+    <tbody>
+      <tr *ngFor="let condidat of condidats">
+        <td>{{condidat.nom}}</td>
+        <td>{{condidat.prenom}}</td>
+        <td>{{condidat.id}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

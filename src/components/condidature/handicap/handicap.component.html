@@ -18,27 +18,26 @@
      
       </div>
 </div>
-
 <div *ngFor="let loop of count(selected);let i = index;"  class="row">
   <div class="col"><label>Numéro carte d'handicap </label>
-    <input [formControlName]="i" type="text"  [ngClass]="{ 'errorx': submitted &&f[i].errors ||f[i].dirty  &&f[i].errors || f[i].touched  &&f[i].errors }">
-    <div *ngIf="f[i].invalid && (submitted||f[i].dirty || f[i].touched)">
-      <span class="error text-danger" *ngIf="f[i].errors?.['required']">
+    <input [(ngModel)]="this.hf[i].carte_handicap" [formControlName]="i+'handicap'" type="text"  [ngClass]="{ 'errorx': submitted &&f[i+'handicap'].errors ||f[i+'handicap'].dirty  &&f[i+'handicap'].errors || f[i+'handicap'].touched  &&f[i+'handicap'].errors }">
+    <div *ngIf="f[i+'handicap'].invalid && (submitted||f[i+'handicap'].dirty || f[i+'handicap'].touched)">
+      <span class="error text-danger" *ngIf="f[i+'handicap'].errors?.['required']">
         Numéro carte d'handicap obligatoire.
       </span>
-      <span class="error text-danger" *ngIf="f[i].errors?.['pattern']">
+      <span class="error text-danger" *ngIf="f[i+'handicap'].errors?.['pattern']">
         Numéro carte d'handicap invalide.
       </span>
     </div>  
 </div>
 <div class="col"><label>Degré</label>
-  <select>
+  <select (change)="onChange2($event,i)">
     <label>Degré</label>
-    <option>Degré 1</option>
-    <option>Degré 2</option>
-    <option>Degré 3</option>
+    <option selected  value="1">Degré 1</option>
+    <option  value="2">Degré 2</option>
+    <option  value="3">Degré 3</option>
     </select>
   </div>
 </div>
 <br>
-</fieldset>
+  </fieldset>

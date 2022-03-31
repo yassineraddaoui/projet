@@ -1,11 +1,11 @@
 
 <form [formGroup]="form"  (ngSubmit)="onSubmit()">
-
+<div class="lo">
 <app-radio (itemEmitter)="receiveitem($event)"></app-radio>
 <hr>
 
   <label>Numéro de carte d'identité nationale (CIN)</label> 
-  <input type="text" [ngClass]="{ 'errorx':  f['cin'].dirty  &&f['cin'].errors || f['cin'].touched  &&f['cin'].errors }" formControlName="cin" /> <br><br>
+  <input [(ngModel)]="condidat.cin" type="text" [ngClass]="{ 'errorx':  f['cin'].dirty  &&f['cin'].errors || f['cin'].touched  &&f['cin'].errors }" formControlName="cin" /> <br><br>
 
   <div *ngIf="f['cin'].invalid && (f['cin'].dirty || f['cin'].touched)">
   
@@ -21,10 +21,17 @@
 <div>
   <label>Déligation</label> 
   <select>
-    <option value="Gafsa">Gafsa</option>
-    <option value="Gsar">Gsar</option>
-    <option value="Metlaoui">Metlaoui</option>
-    <option value="Mdhila">Mdhila</option>
+    <option (change)="changeDel('Belkhir')" value="Belkhir">Belkhir</option>
+    <option (change)="changeDel('El Guettar')" value="El Guettar">El Guettar</option>
+    <option (change)="changeDel('El Ksar')" value="El Ksar"> Ksar</option>
+    <option (change)="changeDel('Gafsa Nord')" value="Gafsa Nord">Gafsa Nord</option>
+    <option (change)="changeDel('Gafsa Sud')" value="Gafsa Sud">Gafsa Sud</option>
+    <option (change)="changeDel('Mdhilla')" value="Mdhilla">Mdhilla</option>
+    <option (change)="changeDel('Metlaoui')" value="Metlaoui">Metlaoui</option>
+    <option (change)="changeDel('Moularès')" value="Moularès">Moularès</option>
+    <option (change)="changeDel('Sened')" value="Sened">Sened</option>
+    <option (change)="changeDel('Redeyef')" value="Redeyef">Redeyef</option>
+    <option (change)="changeDel('Sidi Aïch')" value="Sidi Aïch">Sidi Aïch</option>
 
   </select>
    <br><br>
@@ -33,7 +40,7 @@
 
 <div *ngIf="item==='0'">
   <label>Numéro d'inscription</label> 
-  <input [ngClass]="{ 'errorx':  f['inscription'].dirty  &&f['inscription'].errors || f['inscription'].touched  &&f['inscription'].errors }"  type="text" formControlName="inscription"/> <br><br>
+  <input [(ngModel)]="condidat.code" [ngClass]="{ 'errorx':  f['inscription'].dirty  &&f['inscription'].errors || f['inscription'].touched  &&f['inscription'].errors }"  type="text" formControlName="inscription"/> <br><br>
   <div *ngIf="f['inscription'].invalid && (f['inscription'].dirty || f['inscription'].touched)">
     <span class="error text-danger" *ngIf="f['inscription'].errors?.['required']">
       Numéro d'inscription obligatoire.
@@ -41,5 +48,6 @@
 
   </div>
 </div>
-  <input type="submit" value="Submit"/>
+  <input type="submit" value="Submit"  routerLink="/condidature" />
+</div>
 </form>

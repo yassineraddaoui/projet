@@ -1,22 +1,24 @@
+
   <div class="info">
     <ul class="list-group list-group-horizontal">
-      <li class="list-group-item">    Numéro de carte d'identité nationale (CIN) :{{cin}}
+      <li class="list-group-item">    Numéro de carte d'identité nationale (CIN) :{{condidat.cin}}
       </li>
       <li class="list-group-item">Region
-        :{{region}}
+        :Gafsa
       </li>
-      <li class="list-group-item">Déligation :{{deligation}}</li>
+      <li class="list-group-item">Déligation :{{condidat.delegation}}</li>
     </ul>
   </div>
 <br>
-
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <fieldset class="form-control">
+    <div class="cond">
+
+<fieldset class="form-control">
 
 
-<div class="row">
+<div  class="row">
   <div class="col"><label>Prenom</label>
-    <input [ngClass]="{ 'errorx':  submitted  &&f['prenom'].errors || f['prenom'].touched  &&f['prenom'].errors }" formControlName="prenom" type="text" class="form-control" >
+    <input [(ngModel)]="condidat.prenom" [ngClass]="{ 'errorx':  submitted  &&f['prenom'].errors || f['prenom'].touched  &&f['prenom'].errors }" formControlName="prenom" type="text" class="form-control" >
     <div *ngIf="f['prenom'].invalid && (submitted ||f['prenom'].dirty || f['prenom'].touched)">
       <span class="error text-danger" *ngIf="f['prenom'].errors?.['required']">
         Prenom obligatoire.
@@ -28,7 +30,7 @@
   </div>
 
   <div class="col"><label>Nom</label>
-    <input [ngClass]="{ 'errorx': submitted   &&f['nom'].errors || f['nom'].touched  &&f['nom'].errors }" formControlName="nom" type="text" class="form-control">
+    <input [(ngModel)]="condidat.nom" [ngClass]="{ 'errorx': submitted   &&f['nom'].errors || f['nom'].touched  &&f['nom'].errors }" formControlName="nom" type="text" class="form-control">
     <div *ngIf="f['nom'].invalid && (submitted ||f['nom'].dirty || f['nom'].touched)">
       <span class="error text-danger" *ngIf="f['nom'].errors?.['required']">
         Nom obligatoire.
@@ -42,7 +44,7 @@
 
 <div class="row">
   <div class="col"><label>Date de délivrance de la carte d'identité</label>
-    <input [ngClass]="{ 'errorx':submitted   &&f['dateCin'].errors || f['dateCin'].touched  &&f['dateCin'].errors }" type="date" formControlName="dateCin" class="form-control">
+    <input [(ngModel)]="condidat.dateCin" [ngClass]="{ 'errorx':submitted   &&f['dateCin'].errors || f['dateCin'].touched  &&f['dateCin'].errors }" type="date" formControlName="dateCin" class="form-control">
     <div *ngIf="submitted ||f['dateCin'].invalid  && f['dateCin'].touched ">
       <span class="error text-danger" *ngIf="f['dateCin'].errors?.['required']">
         Date de délivrance de la carte d'identité obligatoire.
@@ -50,7 +52,7 @@
     </div>
   </div>
   <div class="col"><label>Rang Cin</label>
-    <input   type="text" formControlName="rangCin" class="form-control" [ngClass]="{ 'errorx':  submitted  &&f['rangCin'].errors || f['rangCin'].touched  &&f['rangCin'].errors }">
+    <input [(ngModel)]="condidat.rangCin"  type="text" formControlName="rangCin" class="form-control" [ngClass]="{ 'errorx':  submitted  &&f['rangCin'].errors || f['rangCin'].touched  &&f['rangCin'].errors }">
     <div *ngIf="f['rangCin'].invalid && (submitted ||f['rangCin'].dirty || f['rangCin'].touched)">
       <span class="error text-danger" *ngIf="f['rangCin'].errors?.['required']">
         Rang Cin obligatoire.
@@ -64,7 +66,7 @@
 
 <div class="row">
   <div class="col"><label>Date de naissance</label>
-    <input formControlName="dateNaiss" type="date" class="form-control"  [ngClass]="{ 'errorx':submitted  &&f['dateNaiss'].errors ||f['dateNaiss'].touched  &&f['dateNaiss'].errors }">
+    <input [(ngModel)]="condidat.dateNaiss" formControlName="dateNaiss" type="date" class="form-control"  [ngClass]="{ 'errorx':submitted  &&f['dateNaiss'].errors ||f['dateNaiss'].touched  &&f['dateNaiss'].errors }">
     <div *ngIf="submitted ||f['dateNaiss'].invalid  && f['dateNaiss'].touched ">
       <span class="error text-danger" *ngIf="f['dateNaiss'].errors?.['required']">
         Date de délivrance de la carte d'identité obligatoire.
@@ -73,7 +75,7 @@
   </div>
 
   <div class="col"><label>Lieu de naissance </label><br>
-    <input formControlName="lieu" type="text" class="form-control" [ngClass]="{ 'errorx':  submitted  &&f['lieu'].errors || f['lieu'].touched  &&f['lieu'].errors }">
+    <input [(ngModel)]="condidat.lieuNaiss" formControlName="lieu" type="text" class="form-control" [ngClass]="{ 'errorx':  submitted  &&f['lieu'].errors || f['lieu'].touched  &&f['lieu'].errors }">
     <div *ngIf="f['lieu'].invalid && (submitted ||f['lieu'].dirty || f['lieu'].touched)">
       <span class="error text-danger" *ngIf="f['lieu'].errors?.['required']">
         Lieu de naissance obligatoire.
@@ -88,24 +90,25 @@
 <div class="row">
   <div class="col"><label>Etat Civil</label><br>
     <select (change)="onChange($event)"> 
-      <option value="1" selected> Célibataire</option>
-      <option value="2">Marié</option>
-      <option value="3">divorcé</option>
+      <option value="Célibataire" selected> Célibataire</option>
+      <option value="Marié">Marié</option>
+      <option value="Divorcé">Divorcé</option>
     </select>
  </div>
  <div class="col"><label>Sexe</label><br>
-  <label>Homme</label> <input checked name="sexe" type="radio" >
-  <label>Femme</label><input name="sexe" type="radio"  >
+  <label>Homme</label> <input  (change)="changeSex('h')" value="h" checked name="sexe" type="radio" >
+  <label>Femme</label><input  (change)="changeSex('f')" value="f" name="sexe" type="radio"  >
  </div>
 </div>
 </fieldset>
-<app-parent [form]="form" [submitted]="submitted"></app-parent>
+<app-parent [condidat]="this.condidat" [form]="form" [submitted]="submitted"></app-parent>
 <app-frere [form]="form" [submitted]="submitted"></app-frere>
-<app-marie [form]="form" [submitted]="submitted" *ngIf="this.selected==='2'"></app-marie>
-<app-handicap [form]="form" [submitted]="submitted"></app-handicap>
-<app-enfant  *ngIf="this.selected!=='1'"></app-enfant>
+<app-marie [form]="form" [submitted]="submitted" *ngIf="this.condidat.situation==='Marié'"></app-marie>
+<app-handicap #component1 [condidat]="this.condidat" [form]="form" [submitted]="submitted"></app-handicap>
+<app-enfant  *ngIf="this.condidat.situation!=='Célibataire'"></app-enfant>
 <app-niveau [form]="form" [submitted]="submitted"></app-niveau>
-<app-info [form]="form" [submitted]="submitted"></app-info>
+<app-info [condidat]="this.condidat"  [form]="form" [submitted]="submitted"></app-info>
 <app-specialite [form]="form" [submitted]="submitted"></app-specialite>
 <input type="submit"  value="Submit"  />
+</div>
 </form>
