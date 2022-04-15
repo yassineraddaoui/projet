@@ -2,7 +2,7 @@
   <legend>Parents</legend>
   <div   class="row">
     <div class="col"><label>Nom du père</label>
-      <input [(ngModel)]="condidat.pereNom" formControlName="pereNom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['pereNom'].errors || f['pereNom'].touched  &&f['pereNom'].errors }" >
+      <input [(ngModel)]="this.candidat.parent.nom_pere" formControlName="pereNom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['pereNom'].errors || f['pereNom'].touched  &&f['pereNom'].errors }" >
      <div *ngIf="f['pereNom'].invalid && (submitted||f['pereNom'].dirty || f['pereNom'].touched)">
           <span class="error text-danger" *ngIf="f['pereNom'].errors?.['required']">
             Nom du père obligatoire.
@@ -15,7 +15,7 @@
 
 
       <div class="col"><label>Prenom du père</label>
-        <input [(ngModel)]="condidat.perePrenom" formControlName="perePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['perePrenom'].errors || f['perePrenom'].touched  &&f['perePrenom'].errors }">
+        <input [(ngModel)]="this.candidat.parent.prenom_pere" formControlName="perePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['perePrenom'].errors || f['perePrenom'].touched  &&f['perePrenom'].errors }">
         <div *ngIf="f['perePrenom'].invalid && (submitted||f['perePrenom'].dirty || f['perePrenom'].touched)">
           <span class="error text-danger" *ngIf="f['perePrenom'].errors?.['required']">
             Prenom du père obligatoire.
@@ -26,7 +26,7 @@
         </div>
         </div>
         <div class="col"><label>CIN du père</label>
-          <input [(ngModel)]="condidat.pereCIN" formControlName="pereCIN" type="text" [ngClass]="{ 'errorx':  submitted  &&f['pereCIN'].errors || f['pereCIN'].touched  &&f['pereCIN'].errors }" >
+          <input [(ngModel)]="this.candidat.parent.cin_pere" formControlName="pereCIN" type="text" [ngClass]="{ 'errorx':  submitted  &&f['pereCIN'].errors || f['pereCIN'].touched  &&f['pereCIN'].errors }" >
           <div *ngIf="f['pereCIN'].invalid && (submitted||f['pereCIN'].dirty || f['pereCIN'].touched)">
             <span class="error text-danger" *ngIf="f['pereCIN'].errors?.['required']">
               CIN du père obligatoire.
@@ -39,7 +39,7 @@
   </div>
   <div  class="row">
     <div class="col"><label>Nom du mère</label>
-      <input [(ngModel)]="condidat.mereNom" formControlName="mereNom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['mereNom'].errors || f['mereNom'].touched  &&f['mereNom'].errors }">
+      <input [(ngModel)]="this.candidat.parent.nom_mere" formControlName="mereNom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['mereNom'].errors || f['mereNom'].touched  &&f['mereNom'].errors }">
       <div *ngIf="f['mereNom'].invalid && (submitted||f['mereNom'].dirty || f['mereNom'].touched)">
         <span class="error text-danger" *ngIf="f['mereNom'].errors?.['required']">
           Nom du mère obligatoire.
@@ -50,7 +50,7 @@
       </div>
       </div>
       <div class="col"><label>Prenom du mère</label>
-        <input [(ngModel)]="condidat.merePrenom"  formControlName="merePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['merePrenom'].errors || f['merePrenom'].touched  &&f['merePrenom'].errors }">
+        <input [(ngModel)]="this.candidat.parent.prenom_mere"  formControlName="merePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['merePrenom'].errors || f['merePrenom'].touched  &&f['merePrenom'].errors }">
         <div *ngIf="f['merePrenom'].invalid && (submitted||f['merePrenom'].dirty || f['merePrenom'].touched)">
           <span class="error text-danger" *ngIf="f['merePrenom'].errors?.['required']">
             Prenom du mère obligatoire.
@@ -62,7 +62,7 @@
   
         </div>
         <div class="col"><label>CIN du mère</label>
-          <input [(ngModel)]="condidat.mereCIN" formControlName="mereCIN" type="text" [ngClass]="{ 'errorx':  submitted  &&f['mereCIN'].errors || f['mereCIN'].touched  &&f['mereCIN'].errors }">
+          <input [(ngModel)]="this.candidat.parent.cin_mere" formControlName="mereCIN" type="text" [ngClass]="{ 'errorx':  submitted  &&f['mereCIN'].errors || f['mereCIN'].touched  &&f['mereCIN'].errors }">
           <div *ngIf="f['mereCIN'].invalid && (submitted||f['mereCIN'].dirty || f['mereCIN'].touched)">
             <span class="error text-danger" *ngIf="f['mereCIN'].errors?.['required']">
               Prenom du mère obligatoire.

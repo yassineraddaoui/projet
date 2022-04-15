@@ -5,7 +5,7 @@
 <hr>
 
   <label>Numéro de carte d'identité nationale (CIN)</label> 
-  <input [(ngModel)]="condidat.cin" type="text" [ngClass]="{ 'errorx':  f['cin'].dirty  &&f['cin'].errors || f['cin'].touched  &&f['cin'].errors }" formControlName="cin" /> <br><br>
+  <input [(ngModel)]="candidat.cin" type="text" [ngClass]="{ 'errorx':  f['cin'].dirty  &&f['cin'].errors || f['cin'].touched  &&f['cin'].errors }" formControlName="cin" /> <br><br>
 
   <div *ngIf="f['cin'].invalid && (f['cin'].dirty || f['cin'].touched)">
   
@@ -40,7 +40,7 @@
 
 <div *ngIf="item==='0'">
   <label>Numéro d'inscription</label> 
-  <input [(ngModel)]="condidat.code" [ngClass]="{ 'errorx':  f['inscription'].dirty  &&f['inscription'].errors || f['inscription'].touched  &&f['inscription'].errors }"  type="text" formControlName="inscription"/> <br><br>
+  <input [(ngModel)]="candidat.code" [ngClass]="{ 'errorx':  f['inscription'].dirty  &&f['inscription'].errors || f['inscription'].touched  &&f['inscription'].errors }"  type="text" formControlName="inscription"/> <br><br>
   <div *ngIf="f['inscription'].invalid && (f['inscription'].dirty || f['inscription'].touched)">
     <span class="error text-danger" *ngIf="f['inscription'].errors?.['required']">
       Numéro d'inscription obligatoire.
@@ -48,6 +48,6 @@
 
   </div>
 </div>
-  <input type="submit" value="Submit"  routerLink="/condidature" />
+  <input type="submit" value="Submit"   />
 </div>
 </form>

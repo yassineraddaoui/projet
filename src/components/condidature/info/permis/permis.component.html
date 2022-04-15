@@ -5,8 +5,13 @@
       <label>Permis</label>
     </div>
     <div class="col">
-      <select>
-        <option>...</option>
+      <select (change)="onChange($event)">
+        <option [selected]="this.candidat.permis==='غير متحصل'|| candidat.permis===null">غير متحصل</option>
+        <option value="صنف  أ" [selected]="this.candidat.permis==='صنف  أ'">صنف  أ</option>
+        <option value="صنف  ب" [selected]="this.candidat.permis==='صنف  ب'">صنف  ب </option>
+        <option value="صنف  ج" [selected]="this.candidat.permis==='صنف  ج'"> صنف  ج</option>
+        <option value="صنف  ج+هـ"  [selected]="this.candidat.permis==='صنف  ج+هـ'"> صنف  ج+هـ	</option>
+        <option value="صنف  د" [selected]="this.candidat.permis==='صنف  د'"> صنف  د	</option>
       </select>
     </div>
   </div>

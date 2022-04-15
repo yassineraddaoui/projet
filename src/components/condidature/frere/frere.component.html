@@ -27,7 +27,7 @@
     <div class="col"><label>CIN</label>
       </div>
       <div class="col">
-        <input type="text" [formControlName]="i+'cin'" [ngClass]="{ 'errorx': submitted &&  f[i+'cin'].errors || f[i+'cin'].dirty  &&f[i+'cin'].errors || f[i+'cin'].touched  &&f[i+'cin'].errors }">
+        <input [(ngModel)]="this.fc[i].cin_chomeur" type="text" [formControlName]="i+'cin'" [ngClass]="{ 'errorx': submitted &&  f[i+'cin'].errors || f[i+'cin'].dirty  &&f[i+'cin'].errors || f[i+'cin'].touched  &&f[i+'cin'].errors }">
         <div *ngIf="f[i+'cin'].invalid && (submitted||f[i+'cin'].dirty || f[i+'cin'].touched)">
           <span class="error text-danger" *ngIf="submitted || f[i+'cin'].touched  && f[i+'cin'].errors?.['required']">
             CIN obligatoire.
@@ -40,7 +40,7 @@
         <div class="col"><label>Nom</label>
         </div>
         <div class="col">
-          <input type="text" [formControlName]="i+'nom'" [ngClass]="{ 'errorx': submitted && f[i+'nom'].errors||   f[i+'nom'].dirty  &&f[i+'nom'].errors || f[i+'nom'].touched  &&f[i+'nom'].errors }">
+          <input [(ngModel)]="this.fc[i].nom_chomeur" type="text" [formControlName]="i+'nom'" [ngClass]="{ 'errorx': submitted && f[i+'nom'].errors||   f[i+'nom'].dirty  &&f[i+'nom'].errors || f[i+'nom'].touched  &&f[i+'nom'].errors }">
           <div *ngIf="f[i+'nom'].invalid && (submitted||f[i+'nom'].dirty || f[i+'nom'].touched)">
             <span class="error text-danger" *ngIf="(submitted || f[i+'nom'].touched ) &&f[i+'nom'].errors?.['required']">
               Nom obligatoire.
@@ -53,7 +53,7 @@
           <div class="col"><label>Prenom</label>
           </div>
           <div class="col">
-            <input type="text" [formControlName]="i+'prenom'" [ngClass]="{ 'errorx': submitted && f[i+'prenom'].errors||  f[i+'prenom'].dirty  &&f[i+'prenom'].errors || f[i+'prenom'].touched  &&f[i+'prenom'].errors }">
+            <input  [(ngModel)]="this.fc[i].prenom_chomeur" type="text" [formControlName]="i+'prenom'" [ngClass]="{ 'errorx': submitted && f[i+'prenom'].errors||  f[i+'prenom'].dirty  &&f[i+'prenom'].errors || f[i+'prenom'].touched  &&f[i+'prenom'].errors }">
             <div *ngIf="f[i+'prenom'].invalid && (submitted||f[i+'prenom'].dirty || f[i+'prenom'].touched)">
               <span class="error text-danger" *ngIf="(submitted || f[i+'prenom'].touched ) &&f[i+'prenom'].errors?.['required']">
                 Prenom obligatoire.
@@ -67,7 +67,7 @@
             <div class="col"><label>Date de naissance</label>
             </div>
             <div class="col">
-              <input type="date" [formControlName]="i+'date'" [ngClass]="{ 'errorx': submitted && f[i+'date'].errors|| f[i+'date'].dirty  &&f[i+'date'].errors || f[i+'date'].touched  &&f[i+'date'].errors }">
+              <input type="date" [(ngModel)]="this.fc[i].date_naissance_chomeur" [formControlName]="i+'date'" [ngClass]="{ 'errorx': submitted && f[i+'date'].errors|| f[i+'date'].dirty  &&f[i+'date'].errors || f[i+'date'].touched  &&f[i+'date'].errors }">
               <div *ngIf="f[i+'date'].invalid && (submitted||f[i+'date'].dirty || f[i+'date'].touched)">
                 <span class="error text-danger" *ngIf=" (submitted || f[i+'date'].touched )f[i+'date'].errors?.['required']">
                   Date de naissance obligatoire.

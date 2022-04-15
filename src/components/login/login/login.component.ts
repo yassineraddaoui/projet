@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Condidat } from 'src/app/condidat';
-import { CondidatService } from 'src/components/Condidat.service';
+import { Candidat } from 'src/app/Candidat';
+import { CondidatService } from 'src/components/Candidat.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +12,11 @@ import { CondidatService } from 'src/components/Condidat.service';
 export class LoginComponent implements OnInit {
   item ='1';
   error=0;
-  condidat: Condidat=new Condidat();
-  constructor(private condidatService:CondidatService) { }
+  candidat: Candidat=new Candidat();
+  constructor(private candidatService:CondidatService) { }
   
   ngOnInit() {
-    this.condidat.delegation="Belkhir";
+    this.candidat.delegation="Belkhir";
   }
   form = new FormGroup({
     cin: new FormControl('', [Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern(/^[0-9]\d*$/)
@@ -31,17 +31,17 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(){
 
-      this.addCondidat()
+      this.addCandidat()
   }
   
   receiveitem($event: string ) {  
     this.item = $event;  
     } 
   changeDel( x: string){
-    this.condidat.delegation=x;
+    this.candidat.delegation=x;
     }
-  addCondidat(){
-    this.condidatService.addCondidat(this.condidat).subscribe(data =>{
+  addCandidat(){
+    this.candidatService.addCandidat(this.candidat).subscribe(data =>{
       console.log(data);
     })
   }

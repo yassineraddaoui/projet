@@ -6,22 +6,25 @@
     </div>
     
     <div class="col">
-    <select>
-      <option>...</option>
+    <select (change)="onChangeFormation($event)">
+      <option>مؤهل تقني مهني</option>
+      <option>مؤهل تقني سامي</option>
+      <option> مؤهل كفاءة مهنية </option>
+      <option>مؤهل مهارة </option>
     </select>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <label>Date de graduation</label>
-      <input type="date" formControlName="graduation" [ngClass]="{ 'errorx':  f['graduation'].dirty  &&f['graduation'].errors || f['graduation'].touched  &&f['graduation'].errors|| submitted&&f['graduation'].errors }">
+      <input [(ngModel)]="candidat.formation.date_diplome_formation" type="date" formControlName="graduation" [ngClass]="{ 'errorx':  f['graduation'].dirty  &&f['graduation'].errors || f['graduation'].touched  &&f['graduation'].errors|| submitted&&f['graduation'].errors }">
       <div *ngIf="f['graduation'].invalid && (f['graduation'].dirty || f['graduation'].touched)">
         <span class="error text-danger">Date de graduation obligatoire.</span>
     </div>
     </div>
     <div class="col">
       <label>Moyenne</label>
-      <input type="text" formControlName="moy" [ngClass]="{ 'errorx':  f['moy'].dirty  &&f['moy'].errors || f['moy'].touched  &&f['moy'].errors || f['moy'].errors &&submitted }">
+      <input [(ngModel)]="candidat.formation.moyenne" type="text" formControlName="moy" [ngClass]="{ 'errorx':  f['moy'].dirty  &&f['moy'].errors || f['moy'].touched  &&f['moy'].errors || f['moy'].errors &&submitted }">
       <div *ngIf="f['moy'].invalid && (f['moy'].dirty|| submitted|| f['moy'].touched)">
   
         <span class="error text-danger"  *ngIf="f['moy'].errors?.['required']">
@@ -32,6 +35,35 @@
       </span>
     </div>
   </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <label> Spécialité </label>
+    </div>
+    
+    <div class="col">
+    <select (change)="onChangeSpec($event)" >
+      <option>اللحام والتركيب</option>
+      <option>الإلكترونيك الصناعي</option>
+      <option>صيانة أجهزة الميكروإعلامية</option>
+      <option>الآلية و الإعلامية الصناعية</option>
+      <option> إعلامية التصرف</option>
+      <option>الصناعة الميكانيكية </option>
+      <option>الكترونيك وكهرباء السيارات</option>
+      <option>ميكانيك وكهرباء السيارات</option>
+      <option>قيادة أنظمة الإنتاج</option>
+      <option>الصيانة الإلكترونية للأنظمة الآلية</option>
+      <option> الآلية والإعلامية الصناعية</option>
+      <option> تقنيات الإنتاج للصناعة الإلكترونية</option>
+      <option> استغلال الشبكات</option>
+      <option>البنى التحتية والشبكات</option>
+      <option>التصرف في الصيانة الصناعية</option>
+      <option> المحاسبة والمالية</option>
+      <option>الإلكترونيك الصناعي</option>
+      <option>الإتصالات إختصاص الإعلامية</option>
+    </select>
+    </div>
   </div>
   <br>
 </fieldset>

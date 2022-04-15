@@ -7,12 +7,11 @@
 <label>Niveau d'études</label>
     </div>
     <div class="col">
-      <select (change)="onChange($event);PostData()">
-        <option  value="1">Superieur</option>
-        <option  value="2">Primaire</option>
-        <option  value="3">Secondaire</option>
-        <option  value="4">Formation professionnelle</option>
-
+      <select  (change)="onChange($event)">
+        <option [selected]="this.candidat.niveauEtude.niveau_candidat==='Superieur' ||this.candidat.niveauEtude===null">Superieur</option>
+        <option [selected]="this.candidat.niveauEtude.niveau_candidat==='Primaire'" >Primaire</option>
+        <option [selected]="this.candidat.niveauEtude.niveau_candidat==='Secondaire'">Secondaire</option>
+        <option [selected]="this.candidat.niveauEtude.niveau_candidat==='Formation Professionnelle'">Formation Professionnelle</option>
       </select>
     </div>
 
@@ -20,13 +19,18 @@
   <div class="row">
     <div class="col">
       <label>Section</label>
-      <select>
-        <option>...</option>
+      <select (change)="onChangeSection($event)">
+        <option [selected]="this.candidat.niveauEtude.specialite_etude==='Lettres' ||this.candidat.niveauEtude===null">Lettres</option>
+        <option [selected]="this.candidat.niveauEtude.specialite_etude==='Sciences expérimentales'">Sciences expérimentales</option>
+        <option [selected]="this.candidat.niveauEtude.specialite_etude==='Informatique'">Informatique</option>
+        <option [selected]="this.candidat.niveauEtude.specialite_etude==='Economie et gestion'">Economie et gestion</option>
+        <option [selected]="this.candidat.niveauEtude.specialite_etude==='Techniques'">Techniques</option>
+        <option [selected]="this.candidat.niveauEtude.specialite_etude==='Mathématiques'">Mathématiques</option>
       </select>
     </div>
     <div class="col">
       <label>Date d'abondon scolaire</label>
-      <input formControlName="date" type="date" [ngClass]="{ 'errorx': f['date'].touched  &&f['date'].errors||f['date'].errors&& submitted }">
+      <input [value]="this.candidat.niveauEtude.date_rupture" [(ngModel)]="this.candidat.niveauEtude.date_rupture"  formControlName="date" type="date" [ngClass]="{ 'errorx': f['date'].touched  &&f['date'].errors||f['date'].errors&& submitted }">
       <div *ngIf="f['date'].invalid &&  f['date'].touched">
         <span class="error text-danger" *ngIf="f['date'].errors?.['required']">
           Date obligatoire.
@@ -36,5 +40,5 @@
 
   </div>
 </fieldset>
-<app-superieur [form]="form" [submitted]="submitted" *ngIf="selected==='1'"></app-superieur>
-<app-formation [form]="form" [submitted]="submitted" *ngIf="selected==='4'"></app-formation>
+<app-superieur [candidat]="this.candidat" [form]="form" [submitted]="submitted" *ngIf="this.candidat.niveauEtude.niveau_candidat==='Superieur' ||this.candidat.niveauEtude.niveau_candidat===undefined ||this.candidat.niveauEtude.niveau_candidat===null"></app-superieur>
+<app-formation [candidat]="this.candidat" [form]="form" [submitted]="submitted" *ngIf="this.candidat.niveauEtude.niveau_candidat==='Formation Professionnelle'"></app-formation>

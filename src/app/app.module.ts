@@ -27,7 +27,7 @@ import { HeaderComponent } from 'src/components/Admin/header/header.component';
 import {MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule } from '@angular/material/button';
 import {MatIconModule } from '@angular/material/icon';
-import { ListCondidatsComponent } from 'src/components/Admin/listCondidats/listCondidats.component';
+import { ListCondidatsComponent } from 'src/components/Admin/listCandidats/listCondidats.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 

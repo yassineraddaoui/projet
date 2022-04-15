@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, AbstractControl } from '@angular/forms';
+import { Candidat } from 'src/app/Candidat';
+import { NiveauSuperieur } from 'src/app/NiveauSuperieur';
 
 @Component({
   selector: 'app-superieur',
@@ -7,13 +9,15 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
   styleUrls: ['./supérieur.component.css']
 })
 export class SupérieurComponent implements OnInit {
-  selected: any;
   @Input() form!:FormGroup;
   @Input() submitted!:boolean;
-
+  @Input() candidat!:Candidat;
   constructor() { }
 
   ngOnInit() {
+    if(this.candidat.niveauSuperieur===null){
+      this.candidat.niveauSuperieur=new NiveauSuperieur();
+    }
   }
   
     get f(): { [key: string]: AbstractControl } {
@@ -21,6 +25,10 @@ export class SupérieurComponent implements OnInit {
     }
     public onChange(event:any) {
       const value = event.target.value;
-      this.selected = value;
+      this.candidat.niveauSuperieur.diplome=value;
    }
+   public onChangeSpec(event:any) {
+    const value = event.target.value;
+    this.candidat.niveauSuperieur.specialite=value;
+ }
 }

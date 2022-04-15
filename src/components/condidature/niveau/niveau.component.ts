@@ -1,5 +1,8 @@
-import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output,EventEmitter, Input, OnDestroy } from '@angular/core';
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { Candidat } from 'src/app/Candidat';
+import { NiveauEtude } from 'src/app/NiveauEtude';
+import { NiveauSuperieur } from 'src/app/NiveauSuperieur';
 
 @Component({
   selector: 'app-niveau',
@@ -7,25 +10,30 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
   styleUrls: ['./niveau.component.css']
 })
 export class NiveauComponent implements OnInit {
-  selected="1";
+  selectedSc="Lettres";
+  selected="Superieur";
   @Input() form!:FormGroup;
   @Input() submitted!:boolean;
+  @Input() candidat!:Candidat;
   constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    if(this.candidat.niveauEtude===null)
+    this.candidat.niveauEtude= new NiveauEtude();
+    this.candidat.niveauEtude.niveau_candidat="Superieur";
   }
+  
     get f(): { [key: string]: AbstractControl } {
       return this.form.controls;
     }
     public onChange(event:any) {
-      const value = event.target.value;
-      this.selected = value;
-   }
-   @Output() selectedEmitter = new EventEmitter <string > ();  
-    PostData() {  
-        this.selectedEmitter.emit(this.selected); 
-        console.log(this.selected) ;
-    }    
+       this.selected = event.target.value ;
+      this.candidat.niveauEtude.niveau_candidat=this.selected;
+    }
+     public onChangeSection(event:any) {
+    this.selectedSc = event.target.value;
+    this.candidat.niveauEtude.specialite_etude=this.selectedSc;
+    console.log(this.candidat.niveauEtude);
 
+ }
 }
 

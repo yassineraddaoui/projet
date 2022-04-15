@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Condidat } from 'src/app/condidat';
-import { CondidatServiceService } from 'src/components/Admin/listCondidats/condidat-service.service'
+import { Candidat } from 'src/app/Candidat';
+import { CondidatService } from 'src/components/Candidat.service';
 @Component({
   selector: 'app-listCondidats',
   templateUrl: './listCondidats.component.html',
@@ -8,15 +8,15 @@ import { CondidatServiceService } from 'src/components/Admin/listCondidats/condi
 })
 export class ListCondidatsComponent implements OnInit {
 
-  condidats!: Condidat[];
-  constructor(private CondidatService: CondidatServiceService) { }
+  candidats!: Candidat[];
+  constructor(private candidatService: CondidatService) { }
 
   ngOnInit() {
     this.getCondidats();
   }
 private getCondidats() {
-  this.CondidatService.getCondidatsList().subscribe(data => {
-    this.condidats =data;
+  this.candidatService.getAll().subscribe(data => {
+    this.candidats =data;
     console.log(data);
   });
 }

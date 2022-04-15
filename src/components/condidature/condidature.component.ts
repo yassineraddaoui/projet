@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Condidat } from 'src/app/condidat';
-import { CondidatService } from '../Condidat.service';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Candidat } from 'src/app/Candidat';
+import { NiveauEtude } from 'src/app/NiveauEtude';
+import { NiveauSuperieur } from 'src/app/NiveauSuperieur';
+import { CondidatService } from '../Candidat.service';
+import { HandicapService } from '../handicap.service';
 
 @Component({
   selector: 'app-condidature',
@@ -11,26 +14,40 @@ import { CondidatService } from '../Condidat.service';
 })
 export class CondidatureComponent implements OnInit {
 
-  condidat: Condidat=new Condidat();
+  candidat: Candidat=new Candidat();
+
   public etat!: string;
   niv= "1";
   submitted = false;
-
-
-  constructor( private condidatService:CondidatService , private fb :FormBuilder) {
+  constructor( private candidatService:CondidatService,private handicapService: HandicapService) {
   
    }
-   updateCandidat(){
-  this.condidat.cin="4";
-  console.log(this.condidat);
-  this.condidatService.updateCandidat(this.condidat.cin,this.condidat).subscribe( data =>{
+  updateCandidat(){
+  console.log(this.candidat);
+  this.candidatService.updateCandidat("4",this.candidat).subscribe(data =>{
   console.log(data);
-})
-   }
-  ngOnInit(): void {
+  });
+}
 
-    this.condidat.sexe='h';
-    this.condidat.situation="Célibataire";
+  ngOnInit(): void {
+   this.candidatService.getCandidat("4").subscribe(
+     data=>{
+       this.candidat=data;
+       this.candidat.dateNaiss=this.candidat.dateNaiss.substr(0,10);
+       this.candidat.dateCin=this.candidat.dateCin.substr(0,10);
+       this.candidat.niveauEtude.date_rupture=this.candidat.niveauEtude.date_rupture.substr(0,10);
+       this.candidat.niveauSuperieur.date_diplome=this.candidat.niveauSuperieur.date_diplome.substr(0,10);
+       if(this.candidat.niveauEtude===null|| this.candidat.niveauEtude===undefined ){
+        this.candidat.niveauEtude=new NiveauEtude();
+        this.candidat.niveauSuperieur=new NiveauSuperieur();
+        this.candidat.niveauEtude.niveau_candidat="Superieur";
+        this.candidat.niveauEtude.specialite_etude="Lettres";
+        this.candidat.niveauSuperieur.diplome="اجازة";
+        this.candidat.niveauSuperieur.specialite="1";
+      }
+      console.log(this.candidat);
+      });
+    this.candidat.cin="4";
   }
 
 
@@ -98,7 +115,7 @@ export class CondidatureComponent implements OnInit {
  
   public onChange(event:any) {
     const value = event.target.value;
-    this.condidat.situation = value;
+    this.candidat.situation = value;
  }
  onSubmit(): void {
    this.updateCandidat();
@@ -108,7 +125,8 @@ export class CondidatureComponent implements OnInit {
   }
 }
 changeSex(x: string):void {
-  this.condidat.sexe=x;
+  console.log(typeof( this.candidat))
+  this.candidat.sexe=x;
 }
 
 }

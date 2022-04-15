@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, AbstractControl } from '@angular/forms';
+import { Candidat } from 'src/app/Candidat';
+import { FamilleChomage } from 'src/app/FamilleChomage';
 
 @Component({
   selector: 'app-frere',
@@ -10,6 +12,8 @@ export class FrereComponent implements OnInit {
   selected=0;
   @Input() form!:FormGroup;
   @Input() submitted!:boolean;
+  @Input() candidat!:Candidat;
+  fc :Array<FamilleChomage>=new Array();
 
   constructor() { }
 
@@ -20,9 +24,12 @@ export class FrereComponent implements OnInit {
     return this.form.controls;
   }
   public onChange(event:any) {
-    const value = event.target.value;
-    this.selected = +value ;
-    console.log(this.selected);
+    this.selected = +event.target.value ;
+    this.fc.splice(0,this.fc.length);
+    for(var i=0;i<this.selected;i++){
+      this.fc.push(new FamilleChomage);
+    }
+    this.candidat.fc=this.fc;
  }
  count(length : number){
   return new Array(length);

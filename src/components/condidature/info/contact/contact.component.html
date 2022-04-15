@@ -5,7 +5,7 @@
 <label>Adresse Postale</label>
   </div>
   <div class="col">
-<textarea [(ngModel)]="condidat.adresse" formControlName="postale" [ngClass]="{ 'errortxt':submitted &&f['postale'].errors|| f['postale'].touched  &&f['postale'].errors }"></textarea>
+<textarea [value]="candidat.adresse" [(ngModel)]="candidat.adresse" formControlName="postale" [ngClass]="{ 'errortxt':submitted &&f['postale'].errors|| f['postale'].touched  &&f['postale'].errors }"></textarea>
 <div *ngIf="f['postale'].invalid && (submitted||f['postale'].dirty || f['postale'].touched)">
   <span class="error text-danger" *ngIf=" f['postale'].errors?.['required']">
     Adresse Postale obligatoire.
@@ -17,7 +17,7 @@
 <div class="row">
   <div class="col">
     <label>Adresse Mail</label>
-    <input [(ngModel)]="this.condidat.mail" type="text" formControlName="mail" [ngClass]="{ 'errorx':submitted &&f['mail'].errors|| f['mail'].dirty  &&f['mail'].errors || f['mail'].touched  &&f['mail'].errors }">
+    <input [value]="candidat.mail" [(ngModel)]="this.candidat.mail" type="text" formControlName="mail" [ngClass]="{ 'errorx':submitted &&f['mail'].errors|| f['mail'].dirty  &&f['mail'].errors || f['mail'].touched  &&f['mail'].errors }">
     <div *ngIf="f['mail'].invalid && (submitted||f['mail'].dirty || f['mail'].touched)">
       <span class="error text-danger" *ngIf="f['mail'].errors?.['required']">
         Adresse Mail obligatoire.
@@ -30,7 +30,7 @@
 
   <div class="col">
     <label>Numéro de téléphone</label>
-    <input [(ngModel)]="this.condidat.tel" type="text" formControlName="tel" [ngClass]="{ 'errorx':submitted &&f['mail'].errors|| f['tel'].dirty  &&f['tel'].errors || f['tel'].touched  &&f['tel'].errors }">
+    <input [value]="candidat.tel" [(ngModel)]="this.candidat.tel" type="text" formControlName="tel" [ngClass]="{ 'errorx':submitted &&f['mail'].errors|| f['tel'].dirty  &&f['tel'].errors || f['tel'].touched  &&f['tel'].errors }">
     <div *ngIf="f['tel'].invalid && ( submitted||f['tel'].dirty || f['tel'].touched)">
       <span class="error text-danger" *ngIf="f['tel'].errors?.['required']">
         Numéro de téléphone obligatoire.

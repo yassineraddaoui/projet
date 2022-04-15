@@ -4,13 +4,13 @@
   
     <div class="row">
       <div class="col">
-  <label>Niveau d'etudes</label>
+  <label>Diplome</label>
       </div>
       <div class="col">
         <select (change)="onChange($event)">
-          <option  value="1"></option>
-          <option  value="2"></option>
-          <option  value="3"></option>
+          <option [selected]="this.candidat.niveauSuperieur.diplome==='اجازة'">اجازة</option>
+          <option [selected]="this.candidat.niveauSuperieur.diplome==='شهادة الماجستير'">شهادة الماجستير</option>
+          <option [selected]="this.candidat.niveauSuperieur.diplome==='شهادة الدكتوراه'">شهادة الدكتوراه</option>
         </select>
       </div>
   
@@ -18,19 +18,18 @@
     <div class="row">
       <div class="col">
         <label>Spécialité</label>
-        <select>
-          <option></option>
-          <option></option>
-          <option></option>
-          <option></option>
-          <option></option>
-          <option></option>
-
+        <select (change)="onChangeSpec($event)">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>6</option>
+          <option>7</option>
         </select>
       </div>
       <div class="col">
         <label>Date</label>
-        <input formControlName="dateSup" type="date" [ngClass]="{ 'errorx':f['dateSup'].errors&& submitted|| f['dateSup'].touched  &&f['dateSup'].errors }">
+        <input  [(ngModel)]="this.candidat.niveauSuperieur.date_diplome" formControlName="dateSup" type="date" [ngClass]="{ 'errorx':f['dateSup'].errors&& submitted|| f['dateSup'].touched  &&f['dateSup'].errors }">
         <div *ngIf="f['dateSup'].invalid && submitted|| f['dateSup'].invalid &&  f['dateSup'].touched">
           <span class="error text-danger" *ngIf="f['dateSup'].errors?.['required']">
             Date obligatoire.

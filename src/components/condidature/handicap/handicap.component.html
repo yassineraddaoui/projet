@@ -4,13 +4,13 @@
 <div  class="row">
   <div class="col"><label>Nombre de cas d'handicap</label>
 
-    <select (change)="onChange($event)">
-      <option>0</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <select (change)="onChange($event);changeSize()">
+      <option [selected]="candidat.hf.length===0|| candidat.hf===null||candidat.hf===undefined">0</option>
+      <option [selected]="candidat.hf.length===1">1</option>
+      <option [selected]="candidat.hf.length===2">2</option>
+      <option [selected]="candidat.hf.length===3">3</option>
+      <option [selected]="candidat.hf.length===4">4</option>
+      <option [selected]="candidat.hf.length===5">5</option>
 
     </select>
     </div>
@@ -18,9 +18,9 @@
      
       </div>
 </div>
-<div *ngFor="let loop of count(selected);let i = index;"  class="row">
+<div *ngFor="let loop of array(this.selected);let i = index;"  class="row">
   <div class="col"><label>Numéro carte d'handicap </label>
-    <input [(ngModel)]="this.hf[i].carte_handicap" [formControlName]="i+'handicap'" type="text"  [ngClass]="{ 'errorx': submitted &&f[i+'handicap'].errors ||f[i+'handicap'].dirty  &&f[i+'handicap'].errors || f[i+'handicap'].touched  &&f[i+'handicap'].errors }">
+    <input [value]="this.candidat.hf[i].carte_handicap" [(ngModel)]="this.candidat.hf[i].carte_handicap" [formControlName]="i+'handicap'" type="text"  [ngClass]="{ 'errorx': submitted &&f[i+'handicap'].errors ||f[i+'handicap'].dirty  &&f[i+'handicap'].errors || f[i+'handicap'].touched  &&f[i+'handicap'].errors }">
     <div *ngIf="f[i+'handicap'].invalid && (submitted||f[i+'handicap'].dirty || f[i+'handicap'].touched)">
       <span class="error text-danger" *ngIf="f[i+'handicap'].errors?.['required']">
         Numéro carte d'handicap obligatoire.
@@ -33,9 +33,9 @@
 <div class="col"><label>Degré</label>
   <select (change)="onChange2($event,i)">
     <label>Degré</label>
-    <option selected  value="1">Degré 1</option>
-    <option  value="2">Degré 2</option>
-    <option  value="3">Degré 3</option>
+    <option [selected]="candidat.hf[i].degre==='1'"  value="1">Degré 1</option>
+    <option [selected]="candidat.hf[i].degre==='2'" value="2">Degré 2</option>
+    <option [selected]="candidat.hf[i].degre==='3'" value="3">Degré 3</option>
     </select>
   </div>
 </div>
