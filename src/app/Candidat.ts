@@ -1,4 +1,3 @@
-import { ParseTemplateOptions } from "@angular/compiler";
 import { FamilleChomage } from "./FamilleChomage";
 import { FamilleCouple } from "./FamilleCouple";
 import { Formation } from "./Formation";
@@ -10,12 +9,12 @@ import { Parent } from "./Parent";
 export class Candidat {
     fc:Array<FamilleChomage> =new Array;
     hf:Array<Handicap>=new Array;
-    familleCouple!:FamilleCouple;
-    niveauEtude=new NiveauEtude;
-    formation=new Formation;
-    niveauSuperieur=new NiveauSuperieur;
+    familleCouple = new FamilleCouple;
+    niveauEtude=new NiveauEtude("Superieur");
+    formation=new Formation("مؤهل تقني مهني","اللحام والتركيب");
+    niveauSuperieur=  new NiveauSuperieur("اجازة",'1');
     parent=new Parent;
-    situation!:string;
+    situation="Célibataire"
     prenom!:string;
     nom!:string;
     id!:string;

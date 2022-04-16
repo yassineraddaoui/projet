@@ -8,17 +8,12 @@ import { NiveauSuperieur } from 'src/app/NiveauSuperieur';
   templateUrl: './supérieur.component.html',
   styleUrls: ['./supérieur.component.css']
 })
-export class SupérieurComponent implements OnInit {
+export class SupérieurComponent  {
   @Input() form!:FormGroup;
   @Input() submitted!:boolean;
   @Input() candidat!:Candidat;
   constructor() { }
 
-  ngOnInit() {
-    if(this.candidat.niveauSuperieur===null){
-      this.candidat.niveauSuperieur=new NiveauSuperieur();
-    }
-  }
   
     get f(): { [key: string]: AbstractControl } {
       return this.form.controls;

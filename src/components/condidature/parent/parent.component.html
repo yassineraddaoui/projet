@@ -15,7 +15,7 @@
 
 
       <div class="col"><label>Prenom du père</label>
-        <input [(ngModel)]="this.candidat.parent.prenom_pere" formControlName="perePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['perePrenom'].errors || f['perePrenom'].touched  &&f['perePrenom'].errors }">
+        <input [value]="this.candidat.parent.prenom_pere" [(ngModel)]="this.candidat.parent.prenom_pere" formControlName="perePrenom" type="text" [ngClass]="{ 'errorx':  submitted  &&f['perePrenom'].errors || f['perePrenom'].touched  &&f['perePrenom'].errors }">
         <div *ngIf="f['perePrenom'].invalid && (submitted||f['perePrenom'].dirty || f['perePrenom'].touched)">
           <span class="error text-danger" *ngIf="f['perePrenom'].errors?.['required']">
             Prenom du père obligatoire.

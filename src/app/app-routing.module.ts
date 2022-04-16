@@ -5,12 +5,14 @@ import { LoginComponent } from 'src/components/login/login/login.component';
 import { AdminComponent } from 'src/components/Admin/Admin.component';
 import { ListCondidatsComponent } from 'src/components/Admin/listCandidats/listCondidats.component';
 import { EnfantComponent } from 'src/components/condidature/enfant/enfant.component';
+import { HandicapComponent } from 'src/components/condidature/handicap/handicap.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
   {path:'condidature',component:CondidatureComponent},
   {path:'nf',component:EnfantComponent},
+  {path:'x',component:HandicapComponent},
 
   {
     path: 'admin',

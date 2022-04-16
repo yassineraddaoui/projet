@@ -18,7 +18,7 @@
      
       </div>
 </div>
-<div *ngFor="let loop of array(this.selected);let i = index;"  class="row">
+<div *ngFor="let loop of candidat.hf let i = index;"  class="row">
   <div class="col"><label>Numéro carte d'handicap </label>
     <input [value]="this.candidat.hf[i].carte_handicap" [(ngModel)]="this.candidat.hf[i].carte_handicap" [formControlName]="i+'handicap'" type="text"  [ngClass]="{ 'errorx': submitted &&f[i+'handicap'].errors ||f[i+'handicap'].dirty  &&f[i+'handicap'].errors || f[i+'handicap'].touched  &&f[i+'handicap'].errors }">
     <div *ngIf="f[i+'handicap'].invalid && (submitted||f[i+'handicap'].dirty || f[i+'handicap'].touched)">

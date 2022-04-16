@@ -7,10 +7,10 @@
     
     <div class="col">
     <select (change)="onChangeFormation($event)">
-      <option>مؤهل تقني مهني</option>
-      <option>مؤهل تقني سامي</option>
-      <option> مؤهل كفاءة مهنية </option>
-      <option>مؤهل مهارة </option>
+      <option [selected]="candidat.formation.diplome_formation==='مؤهل تقني مهني'">مؤهل تقني مهني</option>
+      <option [selected]="candidat.formation.diplome_formation==='مؤهل تقني سامي'">مؤهل تقني سامي</option>
+      <option [selected]="candidat.formation.diplome_formation==='مؤهل كفاءة مهنية'"> مؤهل كفاءة مهنية </option>
+      <option [selected]="candidat.formation.diplome_formation==='مؤهل مهارة'">مؤهل مهارة </option>
     </select>
     </div>
   </div>

@@ -30,10 +30,13 @@ import {MatIconModule } from '@angular/material/icon';
 import { ListCondidatsComponent } from 'src/components/Admin/listCandidats/listCondidats.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { Info_prsonlComponent } from 'src/components/condidature/info_prsonl/info_prsonl.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    Info_prsonlComponent,
     LoginComponent,
     AdminComponent,
     RadioComponent,

@@ -26,16 +26,11 @@ export class HandicapComponent implements OnInit {
       this.candidat.hf.push(new Handicap);
       this.candidat.hf[i].degre='1';
     }
-    console.log(this.candidat.hf)
-
   }
   public onChange(event:any) {
     this.selected = +event.target.value ;
 }
- public onChange2(event:any,i :number) {
-   this.candidat.hf[i].degre= event.target.value;  
-}
-public array(x:number){
-  return new Array(x);
-}
+   public onChange2(event:any,i :number) {
+      this.candidat.hf[i].degre= event.target.value;  
+  }
 }

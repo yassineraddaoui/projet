@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Candidat } from 'src/app/Candidat';
-import { NiveauEtude } from 'src/app/NiveauEtude';
-import { NiveauSuperieur } from 'src/app/NiveauSuperieur';
 import { CondidatService } from '../Candidat.service';
 import { HandicapService } from '../handicap.service';
 
@@ -15,11 +13,11 @@ import { HandicapService } from '../handicap.service';
 export class CondidatureComponent implements OnInit {
 
   candidat: Candidat=new Candidat();
+  oldCandidat: Candidat=new Candidat();
 
-  public etat!: string;
   niv= "1";
   submitted = false;
-  constructor( private candidatService:CondidatService,private handicapService: HandicapService) {
+  constructor( private candidatService:CondidatService) {
   
    }
   updateCandidat(){
@@ -30,24 +28,87 @@ export class CondidatureComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    
+
    this.candidatService.getCandidat("4").subscribe(
      data=>{
-       this.candidat=data;
-       this.candidat.dateNaiss=this.candidat.dateNaiss.substr(0,10);
-       this.candidat.dateCin=this.candidat.dateCin.substr(0,10);
-       this.candidat.niveauEtude.date_rupture=this.candidat.niveauEtude.date_rupture.substr(0,10);
-       this.candidat.niveauSuperieur.date_diplome=this.candidat.niveauSuperieur.date_diplome.substr(0,10);
-       if(this.candidat.niveauEtude===null|| this.candidat.niveauEtude===undefined ){
-        this.candidat.niveauEtude=new NiveauEtude();
-        this.candidat.niveauSuperieur=new NiveauSuperieur();
-        this.candidat.niveauEtude.niveau_candidat="Superieur";
-        this.candidat.niveauEtude.specialite_etude="Lettres";
-        this.candidat.niveauSuperieur.diplome="اجازة";
-        this.candidat.niveauSuperieur.specialite="1";
+      this.oldCandidat=data;  
+      console.log(this.oldCandidat)  
+      if(this.oldCandidat.prenom!==null)
+        this.candidat.prenom=this.oldCandidat.prenom;
+
+      if(this.oldCandidat.parent!==null)
+         this.candidat.parent=this.oldCandidat.parent;
+
+      if(this.oldCandidat.nom!==null)
+        this.candidat.nom=this.oldCandidat.nom;
+        if(this.oldCandidat.tel!==null)
+        this.candidat.tel=this.oldCandidat.tel;
+
+        if(this.oldCandidat.dateCin!==null)
+        this.candidat.dateCin=this.oldCandidat.dateCin.substr(0,10);
+        if(this.oldCandidat.permis!==null)
+        this.candidat.permis=this.oldCandidat.permis
+
+        if(this.oldCandidat.rangCin!==null)
+        this.candidat.rangCin=this.oldCandidat.rangCin;
+
+        if(this.oldCandidat.dateNaiss!==null)
+        this.candidat.dateNaiss=this.oldCandidat.dateNaiss.substr(0,10);
+
+        if(this.oldCandidat.adresse!==null)
+        this.candidat.adresse=this.oldCandidat.adresse;
+
+        if(this.oldCandidat.familleCouple!==null)
+        this.candidat.familleCouple=this.oldCandidat.familleCouple;
+
+        if(this.oldCandidat.situation!==null)
+        this.candidat.situation=this.oldCandidat.situation;
+        if(this.oldCandidat.sexe===null)
+        this.candidat.situation="h";
+
+        if(this.oldCandidat.sexe!==null)
+        this.candidat.sexe=this.oldCandidat.sexe;
+
+        if(this.oldCandidat.mail!==null)
+        this.candidat.mail=this.oldCandidat.mail;
+
+        if(this.oldCandidat.fc!==null)
+        this.candidat.fc=this.oldCandidat.fc;
+
+        if(this.oldCandidat.hf!==null)
+        this.candidat.hf=this.oldCandidat.hf;
+        
+       
+
+        if(this.oldCandidat.lieuNaiss!==null)
+        this.candidat.lieuNaiss=this.oldCandidat.lieuNaiss;
+
+        if(this.oldCandidat.niveauEtude!==null){
+          this.candidat.niveauEtude=this.oldCandidat.niveauEtude;
+          this.candidat.niveauEtude.date_rupture=this.oldCandidat.niveauEtude.date_rupture.substr(0,10);
+        
+          if(this.oldCandidat.formation!==null){
+          this.candidat.formation=this.oldCandidat.formation;
+          this.candidat.formation.date_diplome_formation=this.oldCandidat.formation.date_diplome_formation.substr(0,10)
+        }
+          if(this.oldCandidat.niveauSuperieur!==null){
+          this.candidat.niveauSuperieur=this.oldCandidat.niveauSuperieur;
+          this.candidat.niveauSuperieur.date_diplome=this.candidat.niveauSuperieur.date_diplome.substr(0,10);
+        
+        }
       }
-      console.log(this.candidat);
+        if (this.oldCandidat.fc!==null){
+          this.candidat.fc=this.oldCandidat.fc;
+          for(var i=0;i<this.candidat.fc.length;i++){
+            this.candidat.fc[i].date_naissance_chomeur
+            =this.candidat.fc[i].date_naissance_chomeur.substr(0,10);
+          }
+        }
+
       });
     this.candidat.cin="4";
+
   }
 
 
@@ -109,14 +170,7 @@ export class CondidatureComponent implements OnInit {
 
 });
   
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
- 
-  public onChange(event:any) {
-    const value = event.target.value;
-    this.candidat.situation = value;
- }
+  
  onSubmit(): void {
    this.updateCandidat();
    this.submitted = true;
@@ -124,9 +178,6 @@ export class CondidatureComponent implements OnInit {
     return;
   }
 }
-changeSex(x: string):void {
-  console.log(typeof( this.candidat))
-  this.candidat.sexe=x;
-}
+
 
 }
