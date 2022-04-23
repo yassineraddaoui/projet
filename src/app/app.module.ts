@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { LoginComponent } from 'src/components/login/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
-import { RadioComponent } from 'src/components/login/login/radio/radio.component';
+import { RadioComponent } from 'src/components/login/radio/radio.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from 'src/components/footer/footer.component';
 import { CondidatureComponent } from 'src/components/condidature/condidature.component';
@@ -29,8 +28,11 @@ import {MatButtonModule } from '@angular/material/button';
 import {MatIconModule } from '@angular/material/icon';
 import { ListCondidatsComponent } from 'src/components/Admin/listCandidats/listCondidats.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Info_prsonlComponent } from 'src/components/condidature/info_prsonl/info_prsonl.component';
+import { AuthInterceptor } from './helpers/authInterceptor';
+import { LoginComponent } from 'src/components/login/login.component';
+import { SignUpSuccesComponent } from 'src/components/login/signUpSucces/signUpSucces.component';
 
 
 @NgModule({
@@ -57,7 +59,8 @@ import { Info_prsonlComponent } from 'src/components/condidature/info_prsonl/inf
     SpecialiteComponent,
     HeaderComponent,
     ListCondidatsComponent,
-    AdminComponent
+    AdminComponent,
+    SignUpSuccesComponent
     
     
   ],
@@ -69,12 +72,17 @@ import { Info_prsonlComponent } from 'src/components/condidature/info_prsonl/inf
     CommonModule,
     MatSelectModule,
     MatToolbarModule,
-    MatButtonModule,
+    MatButtonModule, 
     MatIconModule,
     RouterModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

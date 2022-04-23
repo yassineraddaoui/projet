@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Candidat } from 'src/app/Candidat';
-import { CondidatService } from 'src/components/Candidat.service';
+import { Candidat } from 'src/app/model/Candidat';
+import { CondidatService } from 'src/app/services/Candidat.service';
 @Component({
   selector: 'app-listCondidats',
   templateUrl: './listCondidats.component.html',

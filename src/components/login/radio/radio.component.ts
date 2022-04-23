@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./radio.component.css']
 })
 export class RadioComponent implements OnInit {
-  @Input() item = '1';
+  @Input() item = 'inscription';
   choix!:number;
 
   constructor() { }

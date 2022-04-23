@@ -1,0 +1,70 @@
+
+<form [formGroup]="form"  (ngSubmit)="onSubmit()" *ngIf="true">
+<div class="lo">
+<app-radio (itemEmitter)="receiveitem($event)"></app-radio>
+<hr>
+
+  <label>Numéro de carte d'identité nationale (CIN)</label> 
+  <input [(ngModel)]="cin" type="text" [ngClass]="{ 'errorx':  f['cin'].dirty  &&f['cin'].errors || f['cin'].touched  &&f['cin'].errors }" formControlName="cin" /> <br><br>
+
+  <div *ngIf="f['cin'].invalid && (f['cin'].dirty || f['cin'].touched)">
+  
+    <span class="error text-danger"  *ngIf="f['cin'].errors?.['required']">
+    CIN obligatoire.
+    </span>
+    <span class="error text-danger"  *ngIf="f['cin'].errors?.['minlength'] ||f['cin'].errors?.['maxlength'] || f['cin'].errors?.['pattern']">
+     CIN invalide
+  </span>
+</div>
+
+
+<div>
+  <label>Déligation</label> 
+  <select (change)="onChange($event)">
+    <option  value="Belkhir">Belkhir</option>
+    <option  value="El Guettar">El Guettar</option>
+    <option  value="El Ksar"> Ksar</option>
+    <option  value="Gafsa Nord">Gafsa Nord</option>
+    <option  value="Gafsa Sud">Gafsa Sud</option>
+    <option  value="Mdhilla">Mdhilla</option>
+    <option  value="Metlaoui">Metlaoui</option>
+    <option  value="Moularès">Moularès</option>
+    <option  value="Sened">Sened</option>
+    <option  value="Redeyef">Redeyef</option>
+    <option  value="Sidi Aïch">Sidi Aïch</option>
+
+  </select>
+   <br><br>
+</div>
+
+
+<div *ngIf="item==='login'">
+  <label>Numéro d'inscription</label> 
+  <input  [(ngModel)]="code" [ngClass]="{ 'errorx':  f['inscription'].dirty  &&f['inscription'].errors || f['inscription'].touched  &&f['inscription'].errors }"  type="text" formControlName="inscription"/> <br><br>
+  <div *ngIf="f['inscription'].invalid && (f['inscription'].dirty || f['inscription'].touched)">
+    <span class="error text-danger" *ngIf="f['inscription'].errors?.['required']">
+      Numéro d'inscription obligatoire.
+    </span>
+  </div>
+</div>
+<div class="form-group">
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="sub &&item==='login' && isLoginFailed">
+    Login failed: {{ errorMessage }}
+  </div>
+</div>
+<div class="form-group">
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="sub &&item==='inscription' && isSignUpFailed">
+    Inscription failed: {{ errorMessage }}
+  </div>
+</div>
+
+<input type="submit" value="Submit"   />
+</div>
+</form>
+<app-signUpSucces *ngIf="false" ></app-signUpSucces>

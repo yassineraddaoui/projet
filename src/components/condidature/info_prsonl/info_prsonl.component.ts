@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { Candidat } from 'src/app/Candidat';
+import { Candidat } from 'src/app/model/Candidat';
 
 @Component({
   selector: 'app-info_prsonl',

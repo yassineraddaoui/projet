@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { Candidat } from 'src/app/Candidat';
-import { Handicap } from 'src/app/handicap';
+import { Candidat } from 'src/app/model/Candidat';
+import { Handicap } from 'src/app/model/handicap';
 @Component({
   selector: 'app-handicap',
   templateUrl: './handicap.component.html',

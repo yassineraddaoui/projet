@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Candidat } from 'src/app/Candidat';
-import { CondidatService } from '../Candidat.service';
-import { HandicapService } from '../handicap.service';
+import {FormControl, FormGroup, Validators } from '@angular/forms';
+import { Candidat } from 'src/app/model/Candidat';
+import { CondidatService } from 'src/app/services/Candidat.service';
+import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 
 @Component({
   selector: 'app-condidature',
@@ -17,8 +17,8 @@ export class CondidatureComponent implements OnInit {
 
   niv= "1";
   submitted = false;
-  constructor( private candidatService:CondidatService) {
-  
+  currentUser: any;
+  constructor( private token: TokenStorageService,private candidatService:CondidatService) {
    }
   updateCandidat(){
   console.log(this.candidat);
@@ -28,6 +28,8 @@ export class CondidatureComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
+
     
 
    this.candidatService.getCandidat("4").subscribe(

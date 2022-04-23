@@ -1,8 +1,6 @@
-import { Component, OnInit, Output,EventEmitter, Input, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { Candidat } from 'src/app/Candidat';
-import { NiveauEtude } from 'src/app/NiveauEtude';
-import { NiveauSuperieur } from 'src/app/NiveauSuperieur';
+import { Candidat } from 'src/app/model/Candidat';
 
 @Component({
   selector: 'app-niveau',

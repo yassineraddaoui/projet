@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
-import { Candidat } from 'src/app/Candidat';
-import { FamilleCouple } from 'src/app/FamilleCouple';
+import { Candidat } from 'src/app/model/Candidat';
+import { FamilleCouple } from 'src/app/model/FamilleCouple';
 
 @Component({
   selector: 'app-marie',

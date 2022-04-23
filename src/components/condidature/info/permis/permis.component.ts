@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Candidat } from 'src/app/Candidat';
+import { Candidat } from 'src/app/model/Candidat';
 
 @Component({
   selector: 'app-permis',

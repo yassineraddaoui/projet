@@ -25,7 +25,7 @@ export class Candidat {
     dateCin!:string;
     rangCin!:number;
     sexe!:string;
-    delegation!:string;
+    delegation="Belkhir";
     post!:string;  
     adresse!:string;
     graduation!:string; 
@@ -34,7 +34,4 @@ export class Candidat {
     tel!:string;
     postale!:string;
     permis!:string;
-
-
-  
 }

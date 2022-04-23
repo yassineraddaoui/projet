@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { Candidat } from 'src/app/Candidat';
-import { Formation } from 'src/app/Formation';
+import { FormGroup, AbstractControl } from '@angular/forms';
+import { Candidat } from 'src/app/model/Candidat';
 
 @Component({
   selector: 'app-formation',
