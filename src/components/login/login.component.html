@@ -1,5 +1,5 @@
 
-<form [formGroup]="form"  (ngSubmit)="onSubmit()" *ngIf="true">
+<form [formGroup]="form"  (ngSubmit)="onSubmit()" *ngIf="!signUpSuccessful">
 <div class="lo">
 <app-radio (itemEmitter)="receiveitem($event)"></app-radio>
 <hr>
@@ -60,11 +60,11 @@
     class="alert alert-danger"
     role="alert"
     *ngIf="sub &&item==='inscription' && isSignUpFailed">
-    Inscription failed: {{ errorMessage }}
+    Inscription failed: {{ password }}
   </div>
 </div>
 
 <input type="submit" value="Submit"   />
 </div>
 </form>
-<app-signUpSucces *ngIf="false" ></app-signUpSucces>
+<app-signUpSucces [password]="this.password" *ngIf="signUpSuccessful" ></app-signUpSucces>

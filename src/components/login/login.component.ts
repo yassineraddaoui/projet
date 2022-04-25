@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   signUpSuccessful = false;
   isSignUpFailed = false;
+  password="";
   roles: string[] = [];
   sub=false;
   constructor(    private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      this.router.navigate(['/condidature']);
     }
 
   }
@@ -50,12 +52,11 @@ export class LoginComponent implements OnInit {
     this.sub=true;
     if(!this.form.valid){
       if(this.item==='login')
-      this.authService.login(new AuthLogin(this.cin,this.delegation
-        ,this.code)).subscribe(
+      this.authService.login
+      (new AuthLogin(this.cin,this.delegation,this.code)).subscribe(
         data => {
           this.tokenStorage.saveToken(data.accessToken);
           this.tokenStorage.saveUser(data);
-  
           this.isLoginFailed = false;
           this.isLoggedIn = true;
           this.roles = this.tokenStorage.getUser().roles;
@@ -70,10 +71,10 @@ export class LoginComponent implements OnInit {
       );
         else{
      
-          this.authService.register(new AuthSignUp(this.cin,this.delegation)).subscribe(
-            data => {
-              console.log(data);
-              this.router.navigate(['/condidature']);
+          this.authService.register
+          (new AuthSignUp(this.cin,this.delegation)).subscribe(
+            response  => {
+              this.password=response.message ;
               this.signUpSuccessful = true;
               this.isSignUpFailed = false;
             },
@@ -84,6 +85,7 @@ export class LoginComponent implements OnInit {
           );
         }
     }
+    console.log(this.password);
   }
   reloadPage(): void {
     window.location.reload();

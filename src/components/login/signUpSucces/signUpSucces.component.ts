@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-signUpSucces',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signUpSucces.component.css']
 })
 export class SignUpSuccesComponent implements OnInit {
-
+@Input() password!:string;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.password)
   }
 
 }
