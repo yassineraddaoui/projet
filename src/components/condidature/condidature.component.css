@@ -7,3 +7,8 @@
     display: flex;
     justify-content: center;
 }
+.list-group-item{
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+}

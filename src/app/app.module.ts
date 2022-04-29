@@ -26,13 +26,16 @@ import { HeaderComponent } from 'src/components/Admin/header/header.component';
 import {MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule } from '@angular/material/button';
 import {MatIconModule } from '@angular/material/icon';
-import { ListCondidatsComponent } from 'src/components/Admin/listCandidats/listCondidats.component';
+import { MenuAdminComponent } from 'src/components/Admin/menuAdmin/menuAdmin.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Info_prsonlComponent } from 'src/components/condidature/info_prsonl/info_prsonl.component';
 import { AuthInterceptor } from './helpers/authInterceptor';
 import { LoginComponent } from 'src/components/login/login.component';
 import { SignUpSuccesComponent } from 'src/components/login/signUpSucces/signUpSucces.component';
+import { DetailsComponent } from 'src/components/Admin/menuAdmin/details/details.component';
+import { PdfCondidatureComponent } from 'src/components/condidature/pdfCondidature/pdfCondidature.component';
+import { HeaderCondidatureComponent } from 'src/components/condidature/headerCondidature/headerCondidature.component';
 
 
 @NgModule({
@@ -41,6 +44,7 @@ import { SignUpSuccesComponent } from 'src/components/login/signUpSucces/signUpS
     Info_prsonlComponent,
     LoginComponent,
     AdminComponent,
+    HeaderCondidatureComponent,
     RadioComponent,
     FooterComponent,
     EnfantComponent,
@@ -58,11 +62,11 @@ import { SignUpSuccesComponent } from 'src/components/login/signUpSucces/signUpS
     ResultatComponent,
     SpecialiteComponent,
     HeaderComponent,
-    ListCondidatsComponent,
+    MenuAdminComponent,
     AdminComponent,
-    SignUpSuccesComponent
-    
-    
+    SignUpSuccesComponent,
+    DetailsComponent,
+    PdfCondidatureComponent
   ],
   imports: [
     AppRoutingModule,

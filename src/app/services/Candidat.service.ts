@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Candidat } from '../model/Candidat';
@@ -6,13 +6,11 @@ import { Candidat } from '../model/Candidat';
 @Injectable({
   providedIn: 'root'
 })
-export class CondidatService {
+
+export class CandidatService {
 
   private baseUrl ="http://localhost:8080/api/v1/candidat"
   constructor( private httpClient: HttpClient ) { }
-  getAll(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}s`);
-  }
   addCandidat(candidat:Candidat) :Observable<Object>{
     return this.httpClient.post(`${this.baseUrl}s`,candidat);
   }
@@ -24,5 +22,10 @@ export class CondidatService {
   }
   updateCandidat(cin:string, candidat:Candidat): Observable<any> {
     return this.httpClient.put(`${this.baseUrl}/${cin}`,candidat);
+  }
+  pdfDownload(cin:string): Observable<Blob> {
+    return this.httpClient.get(`${this.baseUrl}pdf/${cin}`, {
+      responseType: 'blob'
+    });
   }
 }

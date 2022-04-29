@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
       this.roles = user.roles;
       this.cin = user.cin;
     }
-
   }
+
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators } from '@angular/forms';
 import { Candidat } from 'src/app/model/Candidat';
-import { CondidatService } from 'src/app/services/Candidat.service';
+import { CandidatService } from 'src/app/services/Candidat.service';
 import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class CondidatureComponent implements OnInit {
   niv= "1";
   submitted = false;
   currentUser: any;
-  constructor( private token: TokenStorageService,private candidatService:CondidatService) {
+  constructor( private token: TokenStorageService,private candidatService:CandidatService) {
    }
   updateCandidat(){
   console.log(this.candidat);
@@ -112,7 +112,10 @@ export class CondidatureComponent implements OnInit {
     this.candidat.cin="4";
 
   }
-
+  logOut(){
+    this.token.signOut();
+  }
+  
 
   form = new FormGroup({
       pereNom: new FormControl('', [Validators.required,Validators.pattern( '[a-zA-Z ]*')],),

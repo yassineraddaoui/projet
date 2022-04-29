@@ -1,0 +1,37 @@
+
+
+  <div class="container" *ngIf="sub===false">
+      <div class="main">
+        <div class="input-group">
+          <input [(ngModel)]="word" (input)="listCandidat()" type="text" class="form-control" placeholder="Search For a candidat by cin">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    <table class=" table table-stripped">
+    <thead>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Cin</th>
+      <th></th>
+    </thead>  
+    <tbody>
+      
+ 
+       <tr *ngFor="let candidat of c">
+        <td>{{candidat.nom}}</td>
+        <td>{{candidat.prenom}}</td>
+        <td>{{candidat.cin}}</td>
+        <td>{{candidat.post}}</td>
+        <td><button mat-raised-button color="primary" (click)="exportPDF(candidat.cin)">Details</button></td>
+
+      </tr> 
+    </tbody>
+  </table>
+  <input type="button" (click)="exportPDFall()" value="Imprimer liste Candidats">
+
+</div>
+<app-details *ngIf="sub===true" [sub]="this.sub" [c]="this.candidat"></app-details>

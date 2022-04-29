@@ -22,7 +22,7 @@ public saveToken(token: string) {
 public getToken() {
   return sessionStorage.getItem(TOKEN_KEY);
 }
-public saveUser(candidat :Candidat) {
+public saveUser(candidat: any) {
   window.sessionStorage.removeItem(USER_KEY);
   window.sessionStorage.setItem(USER_KEY, JSON.stringify(candidat));
 }
