@@ -6,6 +6,8 @@ import { MenuAdminComponent } from 'src/components/Admin/menuAdmin/menuAdmin.com
 import { EnfantComponent } from 'src/components/condidature/enfant/enfant.component';
 import { LoginComponent } from 'src/components/login/login.component';
 import { PdfCondidatureComponent } from 'src/components/condidature/pdfCondidature/pdfCondidature.component';
+import { StatisticsComponent } from 'src/components/Admin/statistics/statistics.component';
+import { LoginAdminComponent } from 'src/components/Admin/loginAdmin/loginAdmin.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -14,15 +16,13 @@ const routes: Routes = [
   {path:'nf',component:EnfantComponent},
   {path:'x',component:PdfCondidatureComponent},
   {path: 'logout', component: LoginComponent},
-
+  {path:'admin/login',component:LoginAdminComponent},
   {
     path: 'admin',
     component: AdminComponent,
     children: [
-      {path: 'statistique', component: MenuAdminComponent}, 
-      {path: 'login', component: LoginComponent}, 
+      {path: 'statistique', component: StatisticsComponent}, 
       {path: 'list', component: MenuAdminComponent}, 
-      {path: 'logout', component: LoginComponent},
     ]
   },
   

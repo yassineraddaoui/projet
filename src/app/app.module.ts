@@ -36,10 +36,14 @@ import { SignUpSuccesComponent } from 'src/components/login/signUpSucces/signUpS
 import { DetailsComponent } from 'src/components/Admin/menuAdmin/details/details.component';
 import { PdfCondidatureComponent } from 'src/components/condidature/pdfCondidature/pdfCondidature.component';
 import { HeaderCondidatureComponent } from 'src/components/condidature/headerCondidature/headerCondidature.component';
-
-
+import { StatisticsComponent } from 'src/components/Admin/statistics/statistics.component';
+import { TstComponent } from 'src/components/Admin/statistics/tst/tst.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LoginAdminComponent } from 'src/components/Admin/loginAdmin/loginAdmin.component';
 @NgModule({
   declarations: [
+    LoginAdminComponent,
+   TstComponent,
     AppComponent,
     Info_prsonlComponent,
     LoginComponent,
@@ -54,6 +58,7 @@ import { HeaderCondidatureComponent } from 'src/components/condidature/headerCon
     MarieComponent,
     FrereComponent,
     NiveauComponent,
+    StatisticsComponent,
     SupérieurComponent,
     FormationComponent,
     InfoComponent,
@@ -79,7 +84,8 @@ import { HeaderCondidatureComponent } from 'src/components/condidature/headerCon
     MatButtonModule, 
     MatIconModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxChartsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

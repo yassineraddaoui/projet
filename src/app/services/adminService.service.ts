@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Candidat } from '../model/Candidat';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,13 @@ pdfDownload(cin:string): Observable<Blob> {
   });
 }
 getAllPDF(): Observable<Blob> {
-  return this.httpClient.get(`${this.baseUrl}/exportcandidats`
+  return this.httpClient.get(`${this.baseUrl}/moderator/exportcandidats`
   ,{
     responseType: 'blob'
   });
 }
-getAll(): Observable<any> {
-  return this.httpClient.get(`${this.baseUrl}/candidats`)
+getAll(): Observable<Array<Candidat>> {
+  return this.httpClient.get<Array<Candidat>>(`${this.baseUrl}/moderator/candidats`)
 }
 
 }

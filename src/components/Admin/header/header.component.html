@@ -3,7 +3,7 @@
 
   <div class="spacer"></div>
 
-<button routerLink="/admin/list" mat-button>List Condidats</button>
+<button routerLink="/admin/list" mat-button>List Candidats</button>
 <button routerLink="/admin/statistique" mat-button>Statistique</button>
-<button routerLink="/admin/login" mat-raised-button color="accent">Déconnexion</button>
+<button (click)="logOut()" routerLink="admin/login" mat-raised-button color="accent">Déconnexion</button>
 </mat-toolbar>
