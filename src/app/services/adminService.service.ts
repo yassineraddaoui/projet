@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Admin } from '../model/admin';
 import { Candidat } from '../model/Candidat';
 
 @Injectable({
@@ -25,5 +26,10 @@ getAllPDF(): Observable<Blob> {
 getAll(): Observable<Array<Candidat>> {
   return this.httpClient.get<Array<Candidat>>(`${this.baseUrl}/moderator/candidats`)
 }
-
+deleteAdmin(mat :string): Observable<any> {
+  return this.httpClient.delete(`${this.baseUrl}/${mat}`);
+}
+addAdmin(admin:Admin) :Observable<Object>{
+  return this.httpClient.post(`${this.baseUrl}`,admin);
+}
 }

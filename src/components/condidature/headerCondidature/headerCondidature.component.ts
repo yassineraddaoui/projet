@@ -17,7 +17,6 @@ export class HeaderCondidatureComponent implements OnInit {
   }
   logOut(){
     this.token.signOut();
-    this.router.navigate(['/login']);
-
+    this.router.navigateByUrl('/login');
   }
 }

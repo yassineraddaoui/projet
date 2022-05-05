@@ -40,8 +40,10 @@ import { StatisticsComponent } from 'src/components/Admin/statistics/statistics.
 import { TstComponent } from 'src/components/Admin/statistics/tst/tst.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoginAdminComponent } from 'src/components/Admin/loginAdmin/loginAdmin.component';
+import { AdminsComponent } from 'src/components/Admin/admins/admins.component';
 @NgModule({
   declarations: [
+    AdminsComponent,
     LoginAdminComponent,
    TstComponent,
     AppComponent,

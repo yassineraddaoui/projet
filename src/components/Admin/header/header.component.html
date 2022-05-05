@@ -3,7 +3,9 @@
 
   <div class="spacer"></div>
 
-<button routerLink="/admin/list" mat-button>List Candidats</button>
-<button routerLink="/admin/statistique" mat-button>Statistique</button>
+<button routerLink="/admin/list" mat-button>LISTE CANDIDATS</button>
+<button routerLink="/admin/statistique" mat-button>STATISTIQUE</button>
+<button *ngIf="true" routerLink="/admin/admins" mat-button>ADMINS</button>
+
 <button (click)="logOut()" routerLink="admin/login" mat-raised-button color="accent">Déconnexion</button>
 </mat-toolbar>

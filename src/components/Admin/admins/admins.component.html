@@ -1,0 +1,44 @@
+
+
+  <div class="container" >
+    <div class="main">
+      <div class="input-group">
+        <input [(ngModel)]="word" (input)="listCandidat()" type="text" class="form-control" placeholder="Search For an Admin by Mat">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  <table class=" table table-stripped">
+  <thead>
+    <th>Matricule</th>
+    <th>Role type</th>
+    <th></th>
+  </thead>  
+  <tbody>
+    
+
+     <tr *ngFor="let adminMat of c">
+      <td>{{adminMat}}</td>
+      <td><button class="btn btn-danger"  (click)="deleteAdmin()">Supprimer</button></td>
+    </tr> 
+    <tr>
+      <td> <input type="text"style="
+        text-align:center" placeholder="MATRICULE"></td>
+        <td> <select onchange="onChange($event)" style="
+          text-align:center">
+            <option>ADMIN</option>
+            <option>MODERATOR</option>
+        </select></td>
+        <td><input [ngModel]="password" placeholder="PASSWORD" type="text"style="
+          text-align:center;"></td>
+        <td><button type="button" class="btn btn-success">Add Admin</button>
+
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

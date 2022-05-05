@@ -8,6 +8,7 @@ import { LoginComponent } from 'src/components/login/login.component';
 import { PdfCondidatureComponent } from 'src/components/condidature/pdfCondidature/pdfCondidature.component';
 import { StatisticsComponent } from 'src/components/Admin/statistics/statistics.component';
 import { LoginAdminComponent } from 'src/components/Admin/loginAdmin/loginAdmin.component';
+import { AdminsComponent } from 'src/components/Admin/admins/admins.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
     children: [
       {path: 'statistique', component: StatisticsComponent}, 
       {path: 'list', component: MenuAdminComponent}, 
+      {path:'admins',component:AdminsComponent}
     ]
   },
   
