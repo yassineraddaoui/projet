@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     cin: new FormControl('', [Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern(/^[0-9]\d*$/)
   ], ),
     Delegation: new FormControl('', Validators.required),
-    inscription:new FormControl('', [Validators.required])
+    password:new FormControl('', [Validators.required])
 
 
   });

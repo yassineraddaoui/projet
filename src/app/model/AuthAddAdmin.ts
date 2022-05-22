@@ -1,10 +1,13 @@
 export class AuthAddAdmin {
-    mat!:string;
-    password!:string;
-    role!:string;
-    constructor(mat:string,role:string,password:string){
-        this.mat=mat;
-        this.password=password;
-        this.role=role;
-    }
+        matricule!:string;
+        role!:string[];
+        password!:string;
+        
+        constructor(mat:string,password:string,role:string[]){
+            this.matricule=mat;
+            this.password=password;
+            this.role=role;
+    
+        }
 }
+

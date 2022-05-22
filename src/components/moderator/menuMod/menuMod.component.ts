@@ -5,11 +5,11 @@ import { saveAs } from 'file-saver';
 import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-menuAdmin',
-  templateUrl: './menuAdmin.component.html',
-  styleUrls: ['./menuAdmin.component.css']
+  selector: 'app-menuMod',
+  templateUrl: './menuMod.component.html',
+  styleUrls: ['./menuModcomponent.css']
 })
-export class MenuAdminComponent implements OnInit {
+export class MenuModComponent implements OnInit {
   sub=false;
   candidats!: Candidat[];
   c!:Candidat[];

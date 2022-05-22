@@ -11,7 +11,7 @@ export class Candidat {
     hf:Array<Handicap>=new Array;
     familleCouple = new FamilleCouple;
     niveauEtude=new NiveauEtude("Superieur");
-    formation=new Formation("مؤهل تقني مهني","اللحام والتركيب");
+    formation=new Formation("BTP","اللحام والتركيب");
     niveauSuperieur=  new NiveauSuperieur("اجازة",'1');
     parent=new Parent;
     situation="Célibataire"

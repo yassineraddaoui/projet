@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthLoginAdmin } from 'src/app/model/AuthLoginAdmin';
+import {AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthAdminService } from 'src/app/services/authAdmin.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 
 @Component({
   selector: 'app-loginAdmin',
@@ -12,27 +12,47 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginAdminComponent implements OnInit {
 
   constructor(private auth:AuthAdminService,
-    private router: Router, ) { }
-  loginForm!: FormGroup;
-  mat!:string;
-  password!:string;
+    private router: Router,private tokenStorage: TokenStorageService){}
+    matricule!:string;
+    password!:string;
+    isLoginFailed=false;
+    sub=false;
+    errorMessage!:string;
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      mat: new FormControl('', [Validators.required, Validators.minLength(8),Validators.maxLength(8)]),
-      password: new FormControl('', [Validators.required])
-    })
+    if (this.tokenStorage.getToken())
+      this.router.navigate(['/admin']);
   }
-  get matField(): any {
-    return this.loginForm.get('mat');
+  loginForm = new FormGroup({
+    matricule: new FormControl('', [Validators.required, Validators.minLength(4),Validators.maxLength(8)]),
+    password: new FormControl('', [Validators.required])
+  })
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginForm.controls;
   }
-  get passwordField(): any {
-    return this.loginForm.get('password');
-  }
-  loginFormSubmit(): void {
-    console.log(this.loginForm.value);
-  }
+
   onSubmit(){
-    console.log(335644)
-    this.auth.loginAdmin(new AuthLoginAdmin(this.mat,this.password)).subscribe(data => this.router.navigate(['/admin']));
+    this.sub=true;
+    if(this.loginForm.valid){
+      this.auth.loginAdmin
+      (this.matricule,this.password).subscribe(
+        data => {
+           this.tokenStorage.saveToken(data.token);
+          this.tokenStorage.saveUser(data);
+          var currentUser = this.tokenStorage.getUser();
+           if(currentUser.roles[0]==="ROLE_ADMIN")
+            this.router.navigate(['/admin']);
+            if(currentUser.roles[0]==='ROLE_MODERATOR')
+            this.router.navigate(['/moderator']);
+            // else 
+            // this.router.navigate(['/condidature']);
+            console.log(currentUser.roles[0])
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isLoginFailed = true;
+        }
+      );
+    }
   }
 }

@@ -3,11 +3,6 @@ th ,td{
     vertical-align: middle;
 
 }
-.fake{
-    margin-top: 1mm;
-    background-color: white;
-    color: white;
-}
 .main {
     width: 60%;
     margin: 50px auto;

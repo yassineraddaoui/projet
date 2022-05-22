@@ -1,10 +1,13 @@
 export class Admin {
     matricule!:string;
-    role!:string;
+    role!:string[];
     password!:string;
-    constructor(mat:string,role:string,password:string){
+    nom!:string;
+    prenom!:string;
+    constructor(mat:string,password:string,role:string[]){
         this.matricule=mat;
-        this.role=role;
         this.password==password;
+        this.role=role;
+
     }
 }

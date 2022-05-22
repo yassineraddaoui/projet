@@ -11,34 +11,56 @@
         </div>
       </div>
     </div>
+    <form [formGroup]="form">
+
   <table class=" table table-stripped">
   <thead>
     <th>Matricule</th>
-    <th>Role type</th>
-    <th></th>
+    <th colspan="2">ROLE</th>
   </thead>  
   <tbody>
     
 
-     <tr *ngFor="let adminMat of c">
-      <td>{{adminMat}}</td>
-      <td><button class="btn btn-danger"  (click)="deleteAdmin()">Supprimer</button></td>
+     <tr *ngFor="let admin of c">
+      <td>{{admin.matricule}}</td>
+        <td colspan="2"> <select (change)="onChange($event)" style="
+          text-align:center">
+            <option value="admin" >ADMIN</option>
+            <option value="mod">MODERATOR</option>
+        </select></td>
+        <td><button class="btn btn-danger"  (click)="deleteAdmin(admin.matricule)">Supprimer</button></td>
+
+      <td><button class="btn btn-success"  (click)="modifierRole(admin.matricule)">Modifier</button></td>
     </tr> 
     <tr>
-      <td> <input type="text"style="
-        text-align:center" placeholder="MATRICULE"></td>
-        <td> <select onchange="onChange($event)" style="
+      <td> <input [(ngModel)]="matricule" formControlName="matricule" type="text"style="
+        text-align:center" placeholder="MATRICULE">
+      <div *ngIf="sub && f['matricule'].errors" class="d-block invalid-feedback">
+        Invalid Matricule.
+      </div>  
+      </td>
+        <td> <select (change)="onChange2($event)" style="
           text-align:center">
-            <option>ADMIN</option>
-            <option>MODERATOR</option>
-        </select></td>
-        <td><input [ngModel]="password" placeholder="PASSWORD" type="text"style="
-          text-align:center;"></td>
-        <td><button type="button" class="btn btn-success">Add Admin</button>
+            <option value="admin">ADMIN</option>
+            <option value="mod">MODERATOR</option>
+        </select>
+        <div *ngIf="sub && f['password'].errors" class="fake">
+        hidden txt
+      </div> 
+      </td>
+        <td><input [(ngModel)]="password" formControlName="password" placeholder="PASSWORD" type="text"style="
+          text-align:center;">
+                  <div *ngIf="sub && f['password'].errors" class="d-block invalid-feedback">
+                    Invalid Password.
+                  </div>          
+        </td>
+
+        <td><button type="button" class="btn btn-success" (click)="addAdmin()">Add Admin</button>
 
         </td>
     </tr>
   </tbody>
 </table>
+</form>
 
 </div>

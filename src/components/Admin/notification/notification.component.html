@@ -1,0 +1,35 @@
+
+
+  <div class="container" >
+    <div class="main">
+      <div class="input-group">
+        <input [(ngModel)]="word" (input)="listNotification()" type="text" class="form-control" placeholder="Search For an Admin by Mat">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  <table class=" table table-stripped">
+  <thead>
+    <th>Matricule ADMIN</th>
+    <th>Date</th>
+    <th>Message</th>
+
+    <th></th>
+  </thead>  
+  <tbody>
+    
+
+     <tr *ngFor="let notifs of notif">
+      <td>{{notifs.matricule}}</td>
+      <td>{{notifs.date.substr(0,10)}}</td>
+      <td>{{notifs.message}}</td>
+    </tr> 
+  </tbody>
+</table>
+
+</div>

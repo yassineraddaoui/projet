@@ -17,9 +17,10 @@ export class CandidatService {
   getCandidat(cin :string) :Observable<Candidat>{
     return this.httpClient.get<Candidat>(`${this.baseUrl}/${cin}`);
   }
-  deleteCandidat(cin :string): Observable<any> {
-    return this.httpClient.delete(`${this.baseUrl}/${cin}`);
+  getListSpécialité(permis:string) :Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/specialite/${permis}`);
   }
+
   updateCandidat(cin:string, candidat:Candidat): Observable<any> {
     return this.httpClient.put(`${this.baseUrl}/${cin}`,candidat);
   }

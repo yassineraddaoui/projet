@@ -32,8 +32,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Info_prsonlComponent } from 'src/components/condidature/info_prsonl/info_prsonl.component';
 import { AuthInterceptor } from './helpers/authInterceptor';
 import { LoginComponent } from 'src/components/login/login.component';
-import { SignUpSuccesComponent } from 'src/components/login/signUpSucces/signUpSucces.component';
-import { DetailsComponent } from 'src/components/Admin/menuAdmin/details/details.component';
 import { PdfCondidatureComponent } from 'src/components/condidature/pdfCondidature/pdfCondidature.component';
 import { HeaderCondidatureComponent } from 'src/components/condidature/headerCondidature/headerCondidature.component';
 import { StatisticsComponent } from 'src/components/Admin/statistics/statistics.component';
@@ -41,9 +39,23 @@ import { TstComponent } from 'src/components/Admin/statistics/tst/tst.component'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoginAdminComponent } from 'src/components/Admin/loginAdmin/loginAdmin.component';
 import { AdminsComponent } from 'src/components/Admin/admins/admins.component';
+import { NotificationComponent } from 'src/components/Admin/notification/notification.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { HeaderModComponent } from 'src/components/moderator/headerMod/headerMod.component';
+import { ModeratorComponent } from 'src/components/moderator/moderator.component';
+import { TstModComponent } from 'src/components/moderator/statistics/tstMod/tstMod.component';
+import { StatisticsModComponent } from 'src/components/moderator/statistics/statisticsMod.component';
+import { MenuModComponent } from 'src/components/moderator/menuMod/menuMod.component';
+
 @NgModule({
   declarations: [
+    MenuModComponent,
+    TstModComponent,
+    StatisticsModComponent,
+    ModeratorComponent,
+    HeaderModComponent,
     AdminsComponent,
+    NotificationComponent,
     LoginAdminComponent,
    TstComponent,
     AppComponent,
@@ -71,11 +83,10 @@ import { AdminsComponent } from 'src/components/Admin/admins/admins.component';
     HeaderComponent,
     MenuAdminComponent,
     AdminComponent,
-    SignUpSuccesComponent,
-    DetailsComponent,
     PdfCondidatureComponent
   ],
   imports: [
+    MatBadgeModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

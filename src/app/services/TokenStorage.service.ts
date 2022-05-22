@@ -21,9 +21,9 @@ public saveToken(token: string) {
 public getToken() {
   return sessionStorage.getItem(TOKEN_KEY);
 }
-public saveUser(candidat: any) {
+public saveUser(admin: any) {
   window.sessionStorage.removeItem(USER_KEY);
-  window.sessionStorage.setItem(USER_KEY, JSON.stringify(candidat));
+  window.sessionStorage.setItem(USER_KEY, JSON.stringify(admin));
 }
 public getUser() {
   return JSON.parse(sessionStorage.getItem(USER_KEY) ||'{}');

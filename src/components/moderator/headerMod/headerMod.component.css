@@ -1,0 +1,9 @@
+.spacer{
+    flex: 1 1 auto;
+  }
+  span{
+    margin-left: 10px;
+  }
+  .notif,.material-icons{
+    margin-right: 7px;
+  }

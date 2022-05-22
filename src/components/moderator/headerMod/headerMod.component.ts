@@ -4,20 +4,18 @@ import { AdminService } from 'src/app/services/adminService.service';
 import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-headerMod',
+  templateUrl: './headerMod.component.html',
+  styleUrls: ['./headerMod.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderModComponent implements OnInit {
+
 
   constructor(private adminS:AdminService, private router: Router,private token: TokenStorageService) { }
   currentUser: any;
   notif:any;
   ngOnInit() {
     this.currentUser=this.token.getUser;
-    this.adminS.getNotifications().subscribe(data=>this.notif=data)
-    // if(this.currentUser.role!=="admin")
-    //   this.router.navigate(['/admin/login']);
   }
   logOut(){
     this.token.signOut();

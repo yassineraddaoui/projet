@@ -1,8 +1,8 @@
 export class AuthLoginAdmin {
-    mat!:string;
+    matricule!:string;
     password!:string;
-    constructor(mat:string,password:string){
-        this.mat=mat;
+    constructor(matricule:string,password:string){
+        this.matricule=matricule;
         this.password=password;
     }
 }

@@ -43,7 +43,8 @@
     <div class="error text-danger" *ngIf="(submitted|| f['post'].touched) && this.bx.length<1">
       <label > Vous devez au moins sélectionner une poste </label>
     </div>
-
-
   <br>
+  <div class="d" *ngFor="let item of list">
+    <p>{{item}}</p>
+  </div>
 </fieldset>

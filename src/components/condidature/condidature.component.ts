@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators } from '@angular/forms';
 import { Candidat } from 'src/app/model/Candidat';
 import { CandidatService } from 'src/app/services/Candidat.service';
 import { TokenStorageService } from 'src/app/services/TokenStorage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-condidature',
@@ -14,11 +15,12 @@ export class CondidatureComponent implements OnInit {
 
   candidat: Candidat=new Candidat();
   oldCandidat: Candidat=new Candidat();
-
+  list:any;
   niv= "1";
   submitted = false;
   currentUser: any;
-  constructor( private token: TokenStorageService,private candidatService:CandidatService) {
+  constructor( private route: ActivatedRoute,
+    private router: Router,private token: TokenStorageService,private candidatService:CandidatService) {
    }
   updateCandidat(){
   console.log(this.candidat);
@@ -28,10 +30,11 @@ export class CondidatureComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    if (!this.token.getToken()){
+      this.router.navigate(['/login']);
+    }
+
     this.currentUser = this.token.getUser();
-
-    
-
    this.candidatService.getCandidat("4").subscribe(
      data=>{
       this.oldCandidat=data;  
@@ -115,7 +118,12 @@ export class CondidatureComponent implements OnInit {
   logOut(){
     this.token.signOut();
   }
-  
+  getList() {
+    console.log(this.candidat.permis);
+    return this.candidatService.getListSpécialité(this.candidat.permis).subscribe(data=>{
+      this.list=data;
+    });  
+  }
 
   form = new FormGroup({
       pereNom: new FormControl('', [Validators.required,Validators.pattern( '[a-zA-Z ]*')],),

@@ -39,11 +39,11 @@
 
 
 <div *ngIf="item==='login'">
-  <label>Numéro d'inscription</label> 
-  <input  [(ngModel)]="code" [ngClass]="{ 'errorx':  f['inscription'].dirty  &&f['inscription'].errors || f['inscription'].touched  &&f['inscription'].errors }"  type="text" formControlName="inscription"/> <br><br>
-  <div *ngIf="f['inscription'].invalid && (f['inscription'].dirty || f['inscription'].touched)">
-    <span class="error text-danger" *ngIf="f['inscription'].errors?.['required']">
-      Numéro d'inscription obligatoire.
+  <label>Mot de passe</label> 
+  <input  type="password" [(ngModel)]="code" [ngClass]="{ 'errorx':  f['password'].dirty  &&f['password'].errors || f['password'].touched  &&f['password'].errors }"  formControlName="password"/> <br><br>
+  <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)">
+    <span class="error text-danger" *ngIf="f['password'].errors?.['required']">
+      Mot de passe obligatoire.
     </span>
   </div>
 </div>
@@ -59,12 +59,11 @@
   <div
     class="alert alert-danger"
     role="alert"
-    *ngIf="sub &&item==='inscription' && isSignUpFailed">
-    Inscription failed: {{ password }}
+    *ngIf="sub &&item==='password' && isSignUpFailed">
+    password failed: {{ password }}
   </div>
 </div>
 
 <input type="submit" value="Submit"   />
 </div>
 </form>
-<app-signUpSucces [password]="this.password" *ngIf="signUpSuccessful" ></app-signUpSucces>
