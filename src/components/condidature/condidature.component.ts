@@ -24,7 +24,7 @@ export class CondidatureComponent implements OnInit {
    }
   updateCandidat(){
   console.log(this.candidat);
-  this.candidatService.updateCandidat("4",this.candidat).subscribe(data =>{
+  this.candidatService.updateCandidat("5",this.candidat).subscribe(data =>{
   console.log(data);
   });
 }
@@ -35,7 +35,7 @@ export class CondidatureComponent implements OnInit {
     }
 
     this.currentUser = this.token.getUser();
-   this.candidatService.getCandidat("4").subscribe(
+   this.candidatService.getCandidat("5").subscribe(
      data=>{
       this.oldCandidat=data;  
       console.log(this.oldCandidat)  

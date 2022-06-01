@@ -54,70 +54,70 @@ export class StatisticsComponent implements OnInit {
       
       if(i.delegation==="Belkhir"){
       this.belkhir++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[0]++
       else
       this.DelegationDataGenderValueW[0]++
     }
       else if(i.delegation==="El Guettar"){
       this.guettar++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[1]++
       else
       this.DelegationDataGenderValueW[1]++
       }
       else if(i.delegation==="Gafsa Sud"){
       this.sud++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[2]++
       else
       this.DelegationDataGenderValueW[2]++
     }
       else if(i.delegation==="Mdhilla"){
       this.mdhilla++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[3]++
       else
       this.DelegationDataGenderValueW[3]++
     }
       else if(i.delegation==="Metlaoui"){
       this.metlaoui++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[4]++
       else
       this.DelegationDataGenderValueW[4]++
     }
       else if(i.delegation==="Moularès"){
       this.moulares++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[5]++
       else
       this.DelegationDataGenderValueW[5]++
     }
       else if(i.delegation==="El Sened"){
       this.sened++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[6]++
       else
       this.DelegationDataGenderValueW[6]++
     }
       else if(i.delegation==="Redeyef"){
       this.redeyef++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[7]++
       else
       this.DelegationDataGenderValueW[7]++
     }
       else if(i.delegation==="Sidi Aïch"){
       this.sidiaich++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[8]++
       else
       this.DelegationDataGenderValueW[8]++
     }
       else if(i.delegation==="Gafsa Nord"){
       this.nord++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[9]++
       else
       this.DelegationDataGenderValueW[9]++
@@ -125,7 +125,7 @@ export class StatisticsComponent implements OnInit {
     }
       else if(i.delegation==="El Ksar"){
       this.ksar++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DelegationDataGenderValue[10]++
       else
       this.DelegationDataGenderValueW[10]++
@@ -315,7 +315,7 @@ export class StatisticsComponent implements OnInit {
     this.m=0;
     this.f=0;
     for(var i of this.listCandidat){
-      if(i.sexe==="M")
+      if(i.sexe==="h")
         this.m=this.m+1;
       else 
         this.f=this.f+1;
@@ -384,28 +384,28 @@ export class StatisticsComponent implements OnInit {
     for(var i of this.listCandidat){
       if(i.niveauEtude.niveau_candidat==="Superieur"){
       this.superieur++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DataGenderNiv[0]++
       else
       this.DataGenderNivW[0]++
     }
       else if(i.niveauEtude.niveau_candidat==="Primaire"){
       this.primaire++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DataGenderNiv[1]++
       else
       this.DataGenderNivW[1]++
     }
       else if(i.niveauEtude.niveau_candidat==="Secondaire"){
       this.secondaire++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DataGenderNiv[2]++
       else
       this.DataGenderNivW[2]++
     }
       else if(i.niveauEtude.niveau_candidat==="Formation Professionnelle"){
       this.formation++;
-      if(i.sexe==="M")
+      if(i.sexe==="h")
       this.DataGenderNiv[3]++
       else
       this.DataGenderNivW[3]++

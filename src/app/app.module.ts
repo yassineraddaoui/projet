@@ -46,9 +46,12 @@ import { ModeratorComponent } from 'src/components/moderator/moderator.component
 import { TstModComponent } from 'src/components/moderator/statistics/tstMod/tstMod.component';
 import { StatisticsModComponent } from 'src/components/moderator/statistics/statisticsMod.component';
 import { MenuModComponent } from 'src/components/moderator/menuMod/menuMod.component';
+import { SpécialitéComponent } from 'src/components/Admin/spécialité/spécialité.component';
 
 @NgModule({
   declarations: [
+
+    SpécialitéComponent,
     MenuModComponent,
     TstModComponent,
     StatisticsModComponent,

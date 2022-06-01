@@ -1,0 +1,117 @@
+
+
+  <div class="container" >
+    <div class="main">
+      <div class="input-group">
+        <input [(ngModel)]="word" (input)="listSp()"  type="text" class="form-control" placeholder="Rechercher Spécialité par Lib_specialite">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <table class=" table table-stripped">
+  <thead>
+    <th>Id</th>
+    <th>Lib_specialite</th>
+    <th>Delegation</th>
+    <th>Permis</th>
+    <th>BTP</th>
+    <th>BTS</th>
+    <th>CAP</th>
+    <th>Sexe</th>
+  </thead>  
+  <tbody>
+    
+
+     <tr *ngFor="let s of spResearch;let i=index">
+      <td>{{s.id}}</td>
+       <td>{{s.lib_specialite}}</td>
+       <td><select (change)="onChangeD($event,i)">
+        <option [selected]="'Belkhir'===s.delegation"  value="Belkhir">Belkhir</option>
+        <option  value="El Guettar" [selected]="'El Guettar'===s.delegation">El Guettar</option>
+        <option  value="El Ksar" [selected]="'Ksar'===s.delegation"> Ksar</option>
+        <option  value="Gafsa Nord" [selected]="'Gafsa Nord'===s.delegation">Gafsa Nord</option>
+        <option  value="Gafsa Sud" [selected]="'Gafsa Sud'===s.delegation">Gafsa Sud</option>
+        <option  value="Mdhilla" [selected]="'Mdhilla'===s.delegation">Mdhilla</option>
+        <option  value="Metlaoui" [selected]="'Metlaoui'===s.delegation">Metlaoui</option>
+        <option  value="Moularès" [selected]="'Moularès'===s.delegation">Moularès</option>
+        <option  value="Sened" [selected]="'Sened'===s.delegation">Sened</option>
+        <option  value="Redeyef" [selected]="'Redeyef'===s.delegation">Redeyef</option>
+        <option  value="Sidi Aïch" [selected]="'Sidi Aïch'===s.delegation">Sidi Aïch</option>
+    
+      </select></td>
+       <td>
+        <select (change)="onChangeP($event,i)">
+          <option [selected]="s.permis==='غير متحصل'|| s.permis===null">غير متحصل</option>
+          <option value="صنف  أ" [selected]="s.permis==='صنف  أ'">صنف  أ</option>
+          <option value="صنف  ب" [selected]="s.permis==='صنف  ب'">صنف  ب </option>
+          <option value="صنف  ج" [selected]="s.permis==='صنف  ج'"> صنف  ج</option>
+          <option value="صنف  ج+هـ"  [selected]="s.permis==='صنف  ج+هـ'"> صنف  ج+هـ	</option>
+          <option value="صنف  د" [selected]="s.permis==='صنف  د'"> صنف  د	</option>
+        </select>
+
+
+
+
+       </td>
+       <td><input [(ngModel)]="s.btp"  class="input" type="txt" [placeholder]="s.btp"/> </td>
+       <td><input [(ngModel)]="s.bts"  class="input" type="txt" [placeholder]="s.bts"/></td>
+       <td><input [(ngModel)]="s.cap"  class="input" type="txt" [placeholder]="s.cap"/></td>
+       <td> <select (change)="onChanges($event,i)">
+        <option [selected]="s.sexe==='h'|| s.sexe===null">Homme</option>
+        <option  [selected]="s.sexe==='f'">Femme</option>
+      </select></td>
+      <td><button class="btn btn-danger"  (click)="deleteSp(s.id)">Supprimer</button></td>
+
+      <td><button class="btn btn-success"  (click)="modifierSp(i,s.id)">Modifier</button></td>
+
+     </tr>
+     <tr >
+      <td></td>
+       <td><input [(ngModel)]="lib_specialite" class="input" placeholder="Lib_specialite" type="txt"></td>
+       <td><select (change)="onChangeNd($event)">
+        <option  value="Belkhir">Belkhir</option>
+        <option  value="El Guettar">El Guettar</option>
+        <option  value="El Ksar" > Ksar</option>
+        <option  value="Gafsa Nord">Gafsa Nord</option>
+        <option  value="Gafsa Sud" >Gafsa Sud</option>
+        <option  value="Mdhilla" >Mdhilla</option>
+        <option  value="Metlaoui" >Metlaoui</option>
+        <option  value="Moularès" >Moularès</option>
+        <option  value="Sened">Sened</option>
+        <option  value="Redeyef" >Redeyef</option>
+        <option  value="Sidi Aïch" >Sidi Aïch</option>
+    
+      </select>
+       <td>
+        <select (change)="onChangeNp($event)">
+          <option >غير متحصل</option>
+          <option value="صنف  أ">صنف  أ</option>
+          <option value="صنف  ب" >صنف  ب </option>
+          <option value="صنف  ج" > صنف  ج</option>
+          <option value="صنف  ج+هـ"  > صنف  ج+هـ	</option>
+          <option value="صنف  د" > صنف  د	</option>
+        </select>
+
+
+
+
+       </td>
+       <td><input class="input" [(ngModel)]="btp"  placeholder="BTP" type="txt" /></td>
+       <td><input class="input" [(ngModel)]="bts" placeholder="BTS" type="txt" /></td>
+       <td><input class="input" [(ngModel)]="cap" placeholder="CAP" type="txt" /></td>
+       <td> <select (change)="onChangeNs($event)">
+        <option value='h'>Homme</option>
+        <option  value='f'>Femme</option>
+      </select></td>
+      <td><button mat-raised-button color="primary"  (click)="addSp()">Ajouter</button></td>
+
+     </tr>
+
+  </tbody>
+</table>
+
+</div>

@@ -20,9 +20,19 @@ export class SpecialiteComponent implements OnInit {
   @Input() submitted!:boolean;
 
   ngOnInit() {
+    this.candidatService.getListSpécialité("4").subscribe(data=>{
+      console.log(data);
+      this.a=data;
+    })
   }
+  cars = [
+    { id: 1, name: "BMW Hyundai" },
+    { id: 2, name: "Kia Tata" },
+    { id: 3, name: "Volkswagen Ford" },
+    { id: 4, name: "Renault Audi" },
+    { id: 5, name: "Mercedes Benz Skoda" },
+  ];
 
-    
     get f(): { [key: string]: AbstractControl } {
       return this.form.controls;
     }

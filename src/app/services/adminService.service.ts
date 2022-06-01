@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Admin } from '../model/admin';
 import { AuthAddAdmin } from '../model/AuthAddAdmin';
 import { Candidat } from '../model/Candidat';
+import { Specialite } from '../model/specialite';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,22 @@ addAdmin(matricule:string,password:string,rolesAdd:string[]) :Observable<Object>
 getAllAdmins():Observable<Array<any>> {
   return this.httpClient.get<Array<any>>(`${this.baseUrl}/list`)
 }
+
 modifierRole(roles: string,matricule:string):Observable<any>{
 return this.httpClient.get(`${this.baseUrl}/modifier/${matricule}/${roles}`);
 }
+getAllSp(): Observable<Array<any>> {
+  return this.httpClient.get<Array<any>>(`${this.baseUrl}/specialite`)
+}
+modifierSpécialité(sp:Specialite,id:any):Observable<any>{
+  return this.httpClient.put(`${this.baseUrl}/specialite/modifier/${id}`,sp);
+}
+addSpécialité(sp:Specialite):Observable<any>{
+  return this.httpClient.post(`${this.baseUrl}/specialite/add/`,sp);
+}
+deleteSp(id:string):Observable<any>{
+  return this.httpClient.delete(`${this.baseUrl}/specialite/delete/${id}`);
+}
+
+
 }
