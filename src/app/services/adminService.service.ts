@@ -14,6 +14,10 @@ export class AdminService {
   private baseUrl ="http://localhost:8080/admin"
   constructor( private httpClient: HttpClient ) { }
 
+  deleteAllNotif(): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/notification`);
+  }
+  
 pdfDownload(cin:string): Observable<Blob> {
   return this.httpClient.get(`${this.baseUrl}/exportcandidat/${cin}`, {
     responseType: 'blob'

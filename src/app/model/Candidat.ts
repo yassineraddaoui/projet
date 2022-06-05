@@ -7,6 +7,7 @@ import { NiveauSuperieur } from "./NiveauSuperieur";
 import { Parent } from "./Parent";
 
 export class Candidat {
+    sp:string[] =new Array();
     fc:Array<FamilleChomage> =new Array;
     hf:Array<Handicap>=new Array;
     familleCouple = new FamilleCouple;

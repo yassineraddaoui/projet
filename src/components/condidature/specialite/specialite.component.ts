@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, AbstractControl } from '@angular/forms';
-import { Candidat } from 'src/app/model/Candidat';
+import { FormGroup, AbstractControl, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CandidatService } from 'src/app/services/Candidat.service';
+import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 
 @Component({
   selector: 'app-specialite',
@@ -9,31 +10,33 @@ import { CandidatService } from 'src/app/services/Candidat.service';
   styleUrls: ['./specialite.component.css']
 })
 export class SpecialiteComponent implements OnInit {
-   a:string[] = new Array() ;
-   bx:string[] = new Array ;
-  selected=""
+   a:string[]=new Array();
+   sp:string[]=new Array();
+   submitted=false;
+   selected=""
   selectList=0;
   max =0;  
   list:any;
-  constructor(private candidatService:CandidatService ) { }
-  @Input() form!:FormGroup;
-  @Input() submitted!:boolean;
+  currentUser!:any;
+  constructor(private route: ActivatedRoute,private token: TokenStorageService,
+    private router: Router,private candidatService:CandidatService ) { }
 
   ngOnInit() {
-    this.candidatService.getListSpécialité("4").subscribe(data=>{
-      console.log(data);
+    if (!this.token.getToken()){
+      this.router.navigate(['/login']);
+    }
+    this.currentUser = this.token.getUser();
+
+    this.candidatService.getListSpécialité(this.currentUser.cin).subscribe(data=>{
       this.a=data;
     })
   }
-  cars = [
-    { id: 1, name: "BMW Hyundai" },
-    { id: 2, name: "Kia Tata" },
-    { id: 3, name: "Volkswagen Ford" },
-    { id: 4, name: "Renault Audi" },
-    { id: 5, name: "Mercedes Benz Skoda" },
-  ];
 
-    get f(): { [key: string]: AbstractControl } {
+  form = new FormGroup({
+    post: new FormControl('', ),
+
+  })
+  get f(): { [key: string]: AbstractControl } {
       return this.form.controls;
     }
     public onChange(event:any, x:number) {
@@ -41,25 +44,35 @@ export class SpecialiteComponent implements OnInit {
       this.selectList=x;
     }  
    add(){
-     if (this.bx.length===2 ){
+     if (this.sp.length===2 ){
         this.max=1
       return;
      }
      if(this.selectList===1 && this.a.indexOf(this.selected)>-1){
       this.max=0;
-      this.bx.push(this.selected);
+      this.sp.push(this.selected);
       this.a.forEach((value: any,index: any)=>{
         if(value==this.selected) this.a.splice(index,1);
      });
    }
   }
    del(){
-    if(this.selectList===2 && this.bx.indexOf(this.selected)>-1){
+    if(this.selectList===2 && this.sp.indexOf(this.selected)>-1){
       this.a.push(this.selected);
-      this.bx.forEach((value: any,index: any)=>{
-        if(value==this.selected) this.bx.splice(index,1);
+      this.sp.forEach((value: any,index: any)=>{
+        if(value==this.selected) this.sp.splice(index,1);
      });
    }
+   console.log(this.sp)
 
    }
+   onSubmit(): void {
+     console.log(this.sp)
+    this.submitted = true;
+    if(this.sp.length<1)
+      return;
+   this.candidatService.choisirSpecialite(this.sp,this.currentUser.cin).subscribe(data=>console.log(data))
+       this.router.navigate(['/pdf']);
+ }
+ 
 }

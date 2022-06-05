@@ -25,8 +25,8 @@
       <td>{{admin.matricule}}</td>
         <td colspan="2"> <select (change)="onChange($event)" style="
           text-align:center">
-            <option value="admin" >ADMIN</option>
-            <option value="mod">MODERATOR</option>
+            <option value="admin" [selected]="admin.roles[0].name==='ROLE_ADMIN'" >ADMIN</option>
+            <option value="mod" [selected]="admin.roles[0].name==='ROLE_MODERATOR'">MODERATOR</option>
         </select></td>
         <td><button class="btn btn-danger"  (click)="deleteAdmin(admin.matricule)">Supprimer</button></td>
 

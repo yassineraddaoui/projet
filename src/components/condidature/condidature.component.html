@@ -10,9 +10,7 @@
       <app-handicap [candidat]="this.candidat" [form]="form" [submitted]="submitted"></app-handicap>
       <app-enfant  *ngIf="this.candidat.situation!=='Célibataire'"></app-enfant>
       <app-niveau [candidat]="this.candidat" [form]="form" [submitted]="submitted"></app-niveau>
-      <app-info [candidat]="this.candidat"  [form]="form" [submitted]="submitted"></app-info>
-      <app-specialite  [form]="form" [submitted]="submitted"></app-specialite>
-      
+      <app-info [candidat]="this.candidat"  [form]="form" [submitted]="submitted"></app-info>      
       <input type="submit"  value="Submit" />
     </div>
   </form>

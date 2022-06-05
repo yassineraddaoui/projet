@@ -24,6 +24,13 @@ export class NotificationComponent implements OnInit {
     });
 
   }
+
+  delete_outline(){
+    this.adminS.deleteAllNotif().subscribe(data=>{console.log(data)
+    this.notif=[]
+    })
+
+  }
   listNotification(){
     if(this.word===""|| this.word===undefined){
       this.c=this.notif;

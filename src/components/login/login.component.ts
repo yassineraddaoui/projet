@@ -15,16 +15,14 @@ import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 export class LoginComponent implements OnInit {
   item ='inscription';
   error=0;
-  code="";
-  delegation="";
+  password="";
+  delegation="Belkhir";
   cin=""
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   signUpSuccessful = false;
   isSignUpFailed = false;
-  password="";
-  roles: string[] = [];
   sub=false;
   constructor(    private route: ActivatedRoute,
     private router: Router,
@@ -32,7 +30,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
       this.router.navigate(['/condidature']);
     }
 
@@ -50,19 +47,16 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(){
     this.sub=true;
-    if(!this.form.valid){
+    //if(!this.form.valid){
       if(this.item==='login')
       this.authService.login
-      (new AuthLogin(this.cin,this.delegation,this.code)).subscribe(
+      (new AuthLogin(this.cin,this.delegation,this.password)).subscribe(
         data => {
-          this.tokenStorage.saveToken(data.accessToken);
+          this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.roles = this.tokenStorage.getUser().roles;
-          // if(this.roles[0]==="ROLE_ADMIN")
-          // this.router.navigate(['/admin']);
-          // this.router.navigate(['/condidature']);
+          this.router.navigate(['/condidature']);
         },
         err => {
           this.errorMessage = err.error.message;
@@ -72,20 +66,20 @@ export class LoginComponent implements OnInit {
         else{
      
           this.authService.register
-          (new AuthSignUp(this.cin,this.delegation)).subscribe(
+          (new AuthSignUp(this.cin,this.delegation,this.password)).subscribe(
             response  => {
-              this.password=response.message ;
               this.signUpSuccessful = true;
               this.isSignUpFailed = false;
+              this.reloadPage();
             },
             err => {
+              console.log(new AuthSignUp(this.cin,this.delegation,this.password))
               this.errorMessage = err.error.message;
               this.isSignUpFailed = true;
             }
           );
         }
-    }
-    console.log(this.password);
+    //}
   }
   reloadPage(): void {
     window.location.reload();

@@ -47,6 +47,7 @@ import { TstModComponent } from 'src/components/moderator/statistics/tstMod/tstM
 import { StatisticsModComponent } from 'src/components/moderator/statistics/statisticsMod.component';
 import { MenuModComponent } from 'src/components/moderator/menuMod/menuMod.component';
 import { SpécialitéComponent } from 'src/components/Admin/spécialité/spécialité.component';
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { SpécialitéComponent } from 'src/components/Admin/spécialité/spécia
     PdfCondidatureComponent
   ],
   imports: [
+    MdbCheckboxModule,
     MatBadgeModule,
     AppRoutingModule,
     FormsModule,

@@ -1,5 +1,5 @@
 
-<form [formGroup]="form"  (ngSubmit)="onSubmit()" *ngIf="!signUpSuccessful">
+<form [formGroup]="form"  (ngSubmit)="onSubmit()">
 <div class="lo">
 <app-radio (itemEmitter)="receiveitem($event)"></app-radio>
 <hr>
@@ -38,9 +38,9 @@
 </div>
 
 
-<div *ngIf="item==='login'">
+<div>
   <label>Mot de passe</label> 
-  <input  type="password" [(ngModel)]="code" [ngClass]="{ 'errorx':  f['password'].dirty  &&f['password'].errors || f['password'].touched  &&f['password'].errors }"  formControlName="password"/> <br><br>
+  <input  type="password" [(ngModel)]="password" [ngClass]="{ 'errorx':  f['password'].dirty  &&f['password'].errors || f['password'].touched  &&f['password'].errors }"  formControlName="password"/> <br><br>
   <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)">
     <span class="error text-danger" *ngIf="f['password'].errors?.['required']">
       Mot de passe obligatoire.

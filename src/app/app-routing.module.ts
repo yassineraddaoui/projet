@@ -13,6 +13,7 @@ import { ModeratorComponent } from 'src/components/moderator/moderator.component
 import { StatisticsModComponent } from 'src/components/moderator/statistics/statisticsMod.component';
 import { MenuModComponent } from 'src/components/moderator/menuMod/menuMod.component';
 import { SpécialitéComponent } from 'src/components/Admin/spécialité/spécialité.component';
+import { SpecialiteComponent } from 'src/components/condidature/specialite/specialite.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path:'pdf',component:PdfCondidatureComponent},
   {path: 'logout', component: LoginComponent},
   {path:'admin/login',component:LoginAdminComponent},
+  {path:'sp',component:SpecialiteComponent},
+
 
   {
     path: 'admin',

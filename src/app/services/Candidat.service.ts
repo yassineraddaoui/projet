@@ -11,14 +11,19 @@ export class CandidatService {
 
   private baseUrl ="http://localhost:8080/api/v1/candidat"
   constructor( private httpClient: HttpClient ) { }
+  choisirSpecialite(bx: string[],cin:string) {
+    return this.httpClient.post(`${this.baseUrl}/specialite/${cin}`,bx);
+  }
+
+
   addCandidat(candidat:Candidat) :Observable<Object>{
     return this.httpClient.post(`${this.baseUrl}s`,candidat);
   }
   getCandidat(cin :string) :Observable<Candidat>{
     return this.httpClient.get<Candidat>(`${this.baseUrl}/${cin}`);
   }
-  getListSpécialité(permis:string) :Observable<any>{
-    return this.httpClient.get<any>(`${this.baseUrl}/specialite/${permis}`);
+  getListSpécialité(cin:string) :Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/specialite/${cin}`);
   }
 
   updateCandidat(cin:string, candidat:Candidat): Observable<any> {

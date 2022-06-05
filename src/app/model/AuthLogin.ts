@@ -1,10 +1,10 @@
 export class AuthLogin {
     cin!:string;
-    code!:string;
+    password!:string;
     delegation!: string;
-    constructor(cin:string,delegation:string,code:string){
+    constructor(cin:string,delegation:string,password:string){
         this.cin=cin;
-        this.code=code;
+        this.password=password;
         this.delegation=delegation;
     }
 }

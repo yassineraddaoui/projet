@@ -3,6 +3,7 @@ import { Candidat } from 'src/app/model/Candidat';
 import { CandidatService } from 'src/app/services/Candidat.service';
 import { TokenStorageService } from 'src/app/services/TokenStorage.service';
 import { saveAs } from 'file-saver';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pdfCondidature',
@@ -11,17 +12,17 @@ import { saveAs } from 'file-saver';
 })
 export class PdfCondidatureComponent implements OnInit {
    candidat:Candidat=new Candidat()
-
-  constructor(private token: TokenStorageService,private candidatService:CandidatService) { }
+   currentUser!:any;
+  constructor(private token: TokenStorageService,private router: Router,private candidatService:CandidatService) { }
 
   ngOnInit() {
-    this.candidat.cin="4";
-    // this.candidatService.pdfDownload(this.candidat);
+    if (!this.token.getToken()){
+      this.router.navigate(['/login']);
+    }
+    this.currentUser = this.token.getUser();
   }
   downloadPDF(){
-    console.log(this.candidat.cin);
-    //this.candidatService.pdfDownload(this.token.getUser());
-    this.candidatService.pdfDownload("4").subscribe(
+    this.candidatService.pdfDownload(this.currentUser.cin).subscribe(
       blob => saveAs(blob,"candidature.pdf")
     );
   }

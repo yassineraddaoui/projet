@@ -24,18 +24,18 @@ export class CondidatureComponent implements OnInit {
    }
   updateCandidat(){
   console.log(this.candidat);
-  this.candidatService.updateCandidat("5",this.candidat).subscribe(data =>{
+  this.candidatService.updateCandidat("1",this.candidat).subscribe(data =>{
   console.log(data);
   });
 }
 
   ngOnInit(): void {
-    if (!this.token.getToken()){
-      this.router.navigate(['/login']);
-    }
+     if (!this.token.getToken()){
+       this.router.navigate(['/login']);
+     }
 
     this.currentUser = this.token.getUser();
-   this.candidatService.getCandidat("5").subscribe(
+   this.candidatService.getCandidat(this.currentUser.cin).subscribe(
      data=>{
       this.oldCandidat=data;  
       console.log(this.oldCandidat)  
@@ -117,6 +117,8 @@ export class CondidatureComponent implements OnInit {
   }
   logOut(){
     this.token.signOut();
+    this.router.navigate(['/login']);
+
   }
   getList() {
     console.log(this.candidat.permis);
@@ -185,11 +187,13 @@ export class CondidatureComponent implements OnInit {
   
   
  onSubmit(): void {
-   this.updateCandidat();
    this.submitted = true;
    if (this.form.invalid) {
     return;
   }
+  this.updateCandidat();
+  this.router.navigate(['/sp']);
+
 }
 
 

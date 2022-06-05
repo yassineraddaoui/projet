@@ -1,18 +1,9 @@
- <fieldset class="form-control" [formGroup]="form">
-  <legend>Domaine</legend>
-  <div class="row">
-    <div class="col">
-      <label>Spécialité</label>
-    </div>
-    <div class="col">
-      <select>
-        <option></option>
-        <option></option>
-      </select>
-    </div>
-  </div>
-  
-  <div class="row">
+<app-headerCondidature></app-headerCondidature>
+<div class="fl">
+ <fieldset class="form-control" >
+  <legend>Spécialités</legend>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
     <div class="col">
       <label>Postes Disponibles</label>
       <select multiple>
@@ -24,28 +15,32 @@
 <div class="button">
   <input type="button" value=">" (click)="add()">
   <input type="button" value="<" (click)="del()">
+  
 </div>
         </div>
 
     <div class="col">
       <label>Postes Sélectionnées</label>
-      <select multiple="multiple" formControlName="post" [ngClass]="{'error': submitted&& this.bx.length<1 || f['post'].touched && this.bx.length<1  }" >
-        <option (click)="onChange($event,2)" *ngFor="let item of bx;let i=index">{{item}}</option>
+      <select multiple="multiple" formControlName="post" [ngClass]="{'error': submitted&& sp.length<1 || f['post'].touched && sp.length<1  }" >
+        <option (click)="onChange($event,2)" *ngFor="let item of sp;let i=index">{{item}}</option>
   
       </select>
     
         </div>
         
   </div>
-    <div class="error text-danger" *ngIf="max===1&&this.bx.length===2">
+    <div class="error text-danger" *ngIf="max===1&&sp.length===2">
       <label > Vous pouvez pas ajouter plus que 2 postes </label>
     </div>
-    <div class="error text-danger" *ngIf="(submitted|| f['post'].touched) && this.bx.length<1">
+    <div class="error text-danger" *ngIf="(submitted|| f['post'].touched) && sp.length<1">
       <label > Vous devez au moins sélectionner une poste </label>
     </div>
   <br>
   <div class="d" *ngFor="let item of list">
-    <p>{{item}}</p>
+    <p>{{item.lib_specialite}}</p>
   </div>
+  <input type="submit" value="Submit" />
+  </form>
 </fieldset>
 
+</div>

@@ -13,7 +13,7 @@ export class AdminsComponent implements OnInit {
   admins!: any;
   adminMat!: string;
   word!:string;
-  c!:Admin[];
+  c!:any[];
   roles!:string;
   rolesAdd!:string[];
   matricule!:string;
